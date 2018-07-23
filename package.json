@@ -1,6 +1,7 @@
 {
   "name": "oe-mixin",
   "description": "oeCloud mixins for client side components",
+  "version": "3.0.0",
   "dependencies": {
     "@polymer/polymer": "^3.0.0"
   },
