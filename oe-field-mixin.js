@@ -159,7 +159,6 @@ const FieldMixin = function (BaseClass) {
         }
 
         connectedCallback() {
-            super();
             if (this.fieldId) {
                 this.fire('register-field', {
                     fieldId: this.fieldId
