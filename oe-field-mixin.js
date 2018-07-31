@@ -114,7 +114,7 @@ const FieldMixin = function (BaseClass) {
         validate() {
 
             var key;
-            var coreElem = this.inputElement;
+            var coreElem = this.inputElement.validity ? this.inputElement : this.inputElement.inputElement;
             var isValid = this._validate();
             if (isValid && this.validationFunction) {
                 isValid = this.validationFunction(this.value);
