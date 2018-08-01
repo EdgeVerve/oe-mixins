@@ -97,6 +97,9 @@ const FieldMixin = function (BaseClass) {
         override in individual elements to return element specific validity.
         */
         _validate() {
+            if(typeof super._validate === "function"){
+                return super._validate();
+            }
             return true;
         }
 
