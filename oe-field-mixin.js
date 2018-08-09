@@ -186,11 +186,26 @@ const FieldMixin = function (BaseClass) {
 
         hashFunc(str) {
             var hash = 5381;
-            for (i = 0; i < str.length; i++) {
-                char = str.charCodeAt(i);
+            for (var i = 0; i < str.length; i++) {
+                var char = str.charCodeAt(i);
                 hash = ((hash << 5) + hash) + char; /* hash * 33 + c */
             }
             return hash;
+        }
+
+        // Polymer fire function
+        fire(type, detail, options) {
+            options = options || {};
+            detail = (detail === null || detail === undefined) ? {} : detail;
+            let event = new Event(type, {
+              bubbles: options.bubbles === undefined ? true : options.bubbles,
+              cancelable: Boolean(options.cancelable),
+              composed: options.composed === undefined ? true : options.composed
+            });
+            event.detail = detail;
+            let node = options.node || this;
+            node.dispatchEvent(event);
+            return event;
         }
     }
 }
