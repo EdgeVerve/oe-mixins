@@ -1,6 +1,22 @@
+/**
+ * @license
+ * ©2018-2019 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
+ * Bangalore, India. All Rights Reserved.
+ */
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 
+/**
+ * This is the Mixin used to mask parts of data in the display of oe-ui components
+ * 
+ * @polymer
+ * @mixinFunction
+ */
 const DataMaskMixin = function (BaseClass) {
+
+  /**
+   * @polymer
+   * @mixinClass
+   */
   return class extends BaseClass {
     static get properties() {
       return {
@@ -41,18 +57,28 @@ const DataMaskMixin = function (BaseClass) {
           type: Number,
           value: 0
         }
-
-      }
+      };
     }
 
     static get observers() {
       return ['_maskDisplay(formattedDisplay)'];
     }
 
+    /**
+     * Return a replaced masked string based on the match.
+     * 
+     * @param {Object} match 
+     * @return {String} replaced string with maskChar
+     */
     _replacer(match) {
       return new Array(match.length + 1).join(this.maskChar);
     }
 
+    /**
+     * Sets the 'display' after masking the formatted string with the 'maskChar'.
+     * 
+     * @param {String} formattedDisplay formatted string to be masked
+     */
     _maskDisplay(formattedDisplay) {
       var valueToShow;
       if (formattedDisplay && this.maskPattern) {
@@ -66,10 +92,8 @@ const DataMaskMixin = function (BaseClass) {
       } else {
         valueToShow = formattedDisplay;
       }
-
       this.set('display', valueToShow);
     }
-
   }
 }
 
