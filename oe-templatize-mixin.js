@@ -31,7 +31,7 @@ const TemplatizeMixin = function (BaseClass) {
                 We are creating a new TemplateInstance class with the options but changing the template to user defined.
             */
             var prevInstance = target.__ctor.prototype.__templatizeOptions;
-            childTemplate.__dataHost = this;
+            source.__dataHost = this;
             this._methodHost = this;
             target.__ctor = templatize(source, this, prevInstance);
             target.__ensureTemplatized();
