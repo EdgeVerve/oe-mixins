@@ -2,570 +2,6 @@
   "schema_version": "1.0.0",
   "mixins": [
     {
-      "description": "This is the Mixin that takes care of default validation of oe-ui input components",
-      "summary": "",
-      "path": "oe-field-mixin.js",
-      "properties": [
-        {
-          "name": "errorPlaceholders",
-          "type": "Array | null | undefined",
-          "description": "i18n placeholders for the error",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 26,
-              "column": 16
-            },
-            "end": {
-              "line": 28,
-              "column": 17
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
-          }
-        },
-        {
-          "name": "userErrorMessage",
-          "type": "Object | null | undefined",
-          "description": "User specified Custom error message\nIf userErrorMessage is defined, show appropriate user-error-message\nwhich is either an object\n   ```{\n      rangeOverflow:'Date should be prior',\n      default: 'Invalid Value in field'\n   }```\nor a string, 'Invalid value'\nSo check if specific error-coode is defined in user-error-message object\nIf not, see if 'default' error-code is defined\notherwise if user-error-message is string, show that error-message,\nif not, then resort to incoming-error-message.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 44,
-              "column": 16
-            },
-            "end": {
-              "line": 46,
-              "column": 17
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          }
-        },
-        {
-          "name": "errorMessage",
-          "type": "string | null | undefined",
-          "description": "Error message displayed",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 49,
-              "column": 16
-            },
-            "end": {
-              "line": 52,
-              "column": 17
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "_hasCustomMessage",
-          "type": "boolean | null | undefined",
-          "description": "Flag for Custom error message/code",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 55,
-              "column": 16
-            },
-            "end": {
-              "line": 58,
-              "column": 17
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "hidden",
-          "type": "boolean | null | undefined",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 60,
-              "column": 16
-            },
-            "end": {
-              "line": 64,
-              "column": 17
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "validationFunction",
-          "type": "string | null | undefined",
-          "description": "Custom validation function",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 67,
-              "column": 16
-            },
-            "end": {
-              "line": 69,
-              "column": 17
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "validateOnInput",
-          "type": "boolean | null | undefined",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 71,
-              "column": 16
-            },
-            "end": {
-              "line": 73,
-              "column": 17
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          }
-        },
-        {
-          "name": "fieldId",
-          "type": "string | null | undefined",
-          "description": "binding to property",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 76,
-              "column": 16
-            },
-            "end": {
-              "line": 76,
-              "column": 31
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          }
-        }
-      ],
-      "methods": [
-        {
-          "name": "setValidity",
-          "description": "Sets the vality and errorMessage based on the input parameters and\nthe `userErrorMessage`",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 108,
-              "column": 8
-            },
-            "end": {
-              "line": 139,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "isValid",
-              "type": "Boolean",
-              "description": "boolean flag for validation"
-            },
-            {
-              "name": "errorMessage",
-              "type": "String",
-              "description": "error message from the input element"
-            },
-            {
-              "name": "errorPlaceholders",
-              "type": "Array",
-              "description": "placeholders for errors"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_setValidity",
-          "description": "Sets the 'invalid' flag and 'errorMessage'",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 147,
-              "column": 8
-            },
-            "end": {
-              "line": 154,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "isValid",
-              "type": "Boolean",
-              "description": "boolean flag for validation"
-            },
-            {
-              "name": "errorMessage",
-              "type": "String",
-              "description": "error message from the input element"
-            },
-            {
-              "name": "errorPlaceholders",
-              "type": "Array",
-              "description": "placeholders for errors"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_validate",
-          "description": "Override in individual elements to return element specific validity.",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 160,
-              "column": 8
-            },
-            "end": {
-              "line": 165,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "!Boolean",
-            "desc": "validity of specific element"
-          }
-        },
-        {
-          "name": "_deepValue",
-          "description": "Get the value from the 'obj' based on the 'path'.",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 173,
-              "column": 8
-            },
-            "end": {
-              "line": 179,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "obj",
-              "type": "Object",
-              "description": "object to navigate"
-            },
-            {
-              "name": "path",
-              "type": "String",
-              "description": "path for navigation"
-            }
-          ],
-          "return": {
-            "type": "Any",
-            "desc": "value present in the given path of the obj."
-          }
-        },
-        {
-          "name": "validate",
-          "description": "Validate, overrides Paper-Input-Behavior's validate method\nUsed to set the validity based on core input element's validity",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 186,
-              "column": 8
-            },
-            "end": {
-              "line": 231,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "Boolean",
-            "desc": "validity of core input element."
-          }
-        },
-        {
-          "name": "connectedCallback",
-          "description": "Registers the field through event , so the parent form can save it.\nBinds the 'validationFunction' property based on its type\nAdds eventListener to input based on 'validateOnInput'",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 238,
-              "column": 8
-            },
-            "end": {
-              "line": 259,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "hashFunc",
-          "description": "Generates a Hash for the given string.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 266,
-              "column": 8
-            },
-            "end": {
-              "line": 273,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "str",
-              "type": "String",
-              "description": "String for which Hash needs to be computed"
-            }
-          ],
-          "return": {
-            "type": "Number",
-            "desc": "hash number for the given string"
-          }
-        },
-        {
-          "name": "fire",
-          "description": "Polymer fire function used to dispatch custom events",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 282,
-              "column": 8
-            },
-            "end": {
-              "line": 294,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "type",
-              "type": "String",
-              "description": "event name"
-            },
-            {
-              "name": "detail",
-              "type": "Object",
-              "description": "data to be sent in the event"
-            },
-            {
-              "name": "options",
-              "type": "Object",
-              "description": "optionals options for the event {bubbles:Boolean,cancelable:Boolean,composed:Boolean,node:HTML Element}"
-            }
-          ],
-          "return": {
-            "type": "Event",
-            "desc": "Custom event created based on the parameters"
-          }
-        }
-      ],
-      "staticMethods": [],
-      "demos": [],
-      "metadata": {},
-      "sourceRange": {
-        "start": {
-          "line": 13,
-          "column": 0
-        },
-        "end": {
-          "line": 296,
-          "column": 1
-        }
-      },
-      "privacy": "public",
-      "name": "FieldMixin",
-      "attributes": [
-        {
-          "name": "error-placeholders",
-          "description": "i18n placeholders for the error",
-          "sourceRange": {
-            "start": {
-              "line": 26,
-              "column": 16
-            },
-            "end": {
-              "line": 28,
-              "column": 17
-            }
-          },
-          "metadata": {},
-          "type": "Array | null | undefined"
-        },
-        {
-          "name": "user-error-message",
-          "description": "User specified Custom error message\nIf userErrorMessage is defined, show appropriate user-error-message\nwhich is either an object\n   ```{\n      rangeOverflow:'Date should be prior',\n      default: 'Invalid Value in field'\n   }```\nor a string, 'Invalid value'\nSo check if specific error-coode is defined in user-error-message object\nIf not, see if 'default' error-code is defined\notherwise if user-error-message is string, show that error-message,\nif not, then resort to incoming-error-message.",
-          "sourceRange": {
-            "start": {
-              "line": 44,
-              "column": 16
-            },
-            "end": {
-              "line": 46,
-              "column": 17
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined"
-        },
-        {
-          "name": "error-message",
-          "description": "Error message displayed",
-          "sourceRange": {
-            "start": {
-              "line": 49,
-              "column": 16
-            },
-            "end": {
-              "line": 52,
-              "column": 17
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "hidden",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 60,
-              "column": 16
-            },
-            "end": {
-              "line": 64,
-              "column": 17
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "validation-function",
-          "description": "Custom validation function",
-          "sourceRange": {
-            "start": {
-              "line": 67,
-              "column": 16
-            },
-            "end": {
-              "line": 69,
-              "column": 17
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "validate-on-input",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 71,
-              "column": 16
-            },
-            "end": {
-              "line": 73,
-              "column": 17
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "field-id",
-          "description": "binding to property",
-          "sourceRange": {
-            "start": {
-              "line": 76,
-              "column": 16
-            },
-            "end": {
-              "line": 76,
-              "column": 31
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        }
-      ],
-      "events": [
-        {
-          "type": "CustomEvent",
-          "name": "oe-field-error",
-          "description": "Fired when the field is invalid",
-          "metadata": {}
-        },
-        {
-          "type": "CustomEvent",
-          "name": "oe-field-ok",
-          "description": "Fired when the field is valid",
-          "metadata": {}
-        },
-        {
-          "type": "CustomEvent",
-          "name": "register-field",
-          "description": "Fired when the element is attached to DOM to register the element",
-          "metadata": {}
-        }
-      ],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": []
-    },
-    {
       "description": "This is the Mixin used to mask parts of data in the display of oe-ui components",
       "summary": "",
       "path": "data-mask-mixin.js",
@@ -829,6 +265,972 @@
           "type": "number | null | undefined"
         }
       ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "This is the Mixin that takes care of default validation of oe-ui input components",
+      "summary": "",
+      "path": "oe-date-mixin.js",
+      "properties": [
+        {
+          "name": "value",
+          "type": "Date | null | undefined",
+          "description": "Property to be binded for the value",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 28,
+              "column": 16
+            },
+            "end": {
+              "line": 32,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_valueChanged\"",
+              "attributeType": "Date"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "type": "string | null | undefined",
+          "description": "String to specify the format in which the data needs to be displayed in the input.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 37,
+              "column": 16
+            },
+            "end": {
+              "line": 41,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_formattingChanged\"",
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"DD MMM YYYY\""
+        }
+      ],
+      "methods": [
+        {
+          "name": "_formattingChanged",
+          "description": "Observer on 'format' property to update the display based on the format.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 8
+            },
+            "end": {
+              "line": 52,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newFormat",
+              "type": "String"
+            },
+            {
+              "name": "oldFormat",
+              "type": "String"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_parseShorthand",
+          "description": "Converts the user shortHand inputs to Date values.\ncomputes values for 'today' , 3y , -7M etc.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 60,
+              "column": 8
+            },
+            "end": {
+              "line": 95,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "input",
+              "type": "String",
+              "description": "input shortHand string"
+            }
+          ],
+          "return": {
+            "type": "Date",
+            "desc": "parsed Date value"
+          }
+        },
+        {
+          "name": "_parseDecimal",
+          "description": "Parses the input string into a float after validation",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 103,
+              "column": 8
+            },
+            "end": {
+              "line": 114,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "input",
+              "type": "String"
+            }
+          ],
+          "return": {
+            "type": "(Float | undefined)",
+            "desc": "parsed float value or undefined if the input cannot be parsed."
+          }
+        },
+        {
+          "name": "_calcDate",
+          "description": "Computes a date based on given parameters.\nconverts a date , 1 ,'year' to return a new Date which is date+1year.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 124,
+              "column": 8
+            },
+            "end": {
+              "line": 160,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "mDate",
+              "type": "Date",
+              "description": "input Date"
+            },
+            {
+              "name": "tuInput",
+              "type": "String",
+              "description": "variation value"
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "description": "variation type"
+            }
+          ],
+          "return": {
+            "type": "Date",
+            "desc": "computed date"
+          }
+        },
+        {
+          "name": "_format",
+          "description": "Formats the input Date and returns a formatted string",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 167,
+              "column": 8
+            },
+            "end": {
+              "line": 173,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "dateVal",
+              "type": "Date",
+              "description": "Date to format."
+            }
+          ],
+          "return": {
+            "type": "String",
+            "desc": "formatted date string"
+          }
+        },
+        {
+          "name": "_valueChanged",
+          "description": "Observer on value property.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 180,
+              "column": 8
+            },
+            "end": {
+              "line": 196,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue",
+              "type": "Date"
+            },
+            {
+              "name": "oldValue",
+              "type": "Date"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_displayChanged",
+          "description": "Event listener for changes to input",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 202,
+              "column": 8
+            },
+            "end": {
+              "line": 223,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "evt",
+              "type": "Event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_checkMinMaxValidity",
+          "description": "Check for min/max validity",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 229,
+              "column": 8
+            },
+            "end": {
+              "line": 236,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value",
+              "type": "Date"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 15,
+          "column": 0
+        },
+        "end": {
+          "line": 239,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "name": "DateMixin",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Property to be binded for the value",
+          "sourceRange": {
+            "start": {
+              "line": 28,
+              "column": 16
+            },
+            "end": {
+              "line": 32,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "Date | null | undefined"
+        },
+        {
+          "name": "format",
+          "description": "String to specify the format in which the data needs to be displayed in the input.",
+          "sourceRange": {
+            "start": {
+              "line": 37,
+              "column": 16
+            },
+            "end": {
+              "line": 41,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "This is the Mixin that takes care of default validation of oe-ui input components",
+      "summary": "",
+      "path": "oe-field-mixin.js",
+      "properties": [
+        {
+          "name": "errorPlaceholders",
+          "type": "Array | null | undefined",
+          "description": "i18n placeholders for the error",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 30,
+              "column": 16
+            },
+            "end": {
+              "line": 32,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Array"
+            }
+          }
+        },
+        {
+          "name": "userErrorMessage",
+          "type": "Object | null | undefined",
+          "description": "User specified Custom error message\nIf userErrorMessage is defined, show appropriate user-error-message\nwhich is either an object\n   ```{\n      rangeOverflow:'Date should be prior',\n      default: 'Invalid Value in field'\n   }```\nor a string, 'Invalid value'\nSo check if specific error-coode is defined in user-error-message object\nIf not, see if 'default' error-code is defined\notherwise if user-error-message is string, show that error-message,\nif not, then resort to incoming-error-message.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 48,
+              "column": 16
+            },
+            "end": {
+              "line": 50,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "errorMessage",
+          "type": "string | null | undefined",
+          "description": "Error message displayed",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 53,
+              "column": 16
+            },
+            "end": {
+              "line": 56,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "_hasCustomMessage",
+          "type": "boolean | null | undefined",
+          "description": "Flag for Custom error message/code",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 59,
+              "column": 16
+            },
+            "end": {
+              "line": 62,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "hidden",
+          "type": "boolean | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 64,
+              "column": 16
+            },
+            "end": {
+              "line": 68,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "validationFunction",
+          "type": "string | null | undefined",
+          "description": "Custom validation function",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 71,
+              "column": 16
+            },
+            "end": {
+              "line": 73,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "validateOnInput",
+          "type": "boolean | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 75,
+              "column": 16
+            },
+            "end": {
+              "line": 77,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "fieldId",
+          "type": "string | null | undefined",
+          "description": "binding to property",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 16
+            },
+            "end": {
+              "line": 80,
+              "column": 31
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "setValidity",
+          "description": "Sets the vality and errorMessage based on the input parameters and\nthe `userErrorMessage`",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 112,
+              "column": 8
+            },
+            "end": {
+              "line": 143,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "isValid",
+              "type": "Boolean",
+              "description": "boolean flag for validation"
+            },
+            {
+              "name": "errorMessage",
+              "type": "String",
+              "description": "error message from the input element"
+            },
+            {
+              "name": "errorPlaceholders",
+              "type": "Array",
+              "description": "placeholders for errors"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_setValidity",
+          "description": "Sets the 'invalid' flag and 'errorMessage'",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 151,
+              "column": 8
+            },
+            "end": {
+              "line": 158,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "isValid",
+              "type": "Boolean",
+              "description": "boolean flag for validation"
+            },
+            {
+              "name": "errorMessage",
+              "type": "String",
+              "description": "error message from the input element"
+            },
+            {
+              "name": "errorPlaceholders",
+              "type": "Array",
+              "description": "placeholders for errors"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_validate",
+          "description": "Override in individual elements to return element specific validity.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 164,
+              "column": 8
+            },
+            "end": {
+              "line": 169,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "!Boolean",
+            "desc": "validity of specific element"
+          }
+        },
+        {
+          "name": "_deepValue",
+          "description": "Get the value from the 'obj' based on the 'path'.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 177,
+              "column": 8
+            },
+            "end": {
+              "line": 183,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "obj",
+              "type": "Object",
+              "description": "object to navigate"
+            },
+            {
+              "name": "path",
+              "type": "String",
+              "description": "path for navigation"
+            }
+          ],
+          "return": {
+            "type": "Any",
+            "desc": "value present in the given path of the obj."
+          }
+        },
+        {
+          "name": "validate",
+          "description": "Validate, overrides Paper-Input-Behavior's validate method\nUsed to set the validity based on core input element's validity",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 190,
+              "column": 8
+            },
+            "end": {
+              "line": 235,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "Boolean",
+            "desc": "validity of core input element."
+          }
+        },
+        {
+          "name": "connectedCallback",
+          "description": "Registers the field through event , so the parent form can save it.\nBinds the 'validationFunction' property based on its type\nAdds eventListener to input based on 'validateOnInput'",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 242,
+              "column": 8
+            },
+            "end": {
+              "line": 263,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "hashFunc",
+          "description": "Generates a Hash for the given string.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 270,
+              "column": 8
+            },
+            "end": {
+              "line": 277,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "str",
+              "type": "String",
+              "description": "String for which Hash needs to be computed"
+            }
+          ],
+          "return": {
+            "type": "Number",
+            "desc": "hash number for the given string"
+          }
+        },
+        {
+          "name": "fire",
+          "description": "Polymer fire function used to dispatch custom events",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 286,
+              "column": 8
+            },
+            "end": {
+              "line": 298,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "type",
+              "type": "String",
+              "description": "event name"
+            },
+            {
+              "name": "detail",
+              "type": "Object",
+              "description": "data to be sent in the event"
+            },
+            {
+              "name": "options",
+              "type": "Object",
+              "description": "optionals options for the event {bubbles:Boolean,cancelable:Boolean,composed:Boolean,node:HTML Element}"
+            }
+          ],
+          "return": {
+            "type": "Event",
+            "desc": "Custom event created based on the parameters"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 300,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "name": "FieldMixin",
+      "attributes": [
+        {
+          "name": "error-placeholders",
+          "description": "i18n placeholders for the error",
+          "sourceRange": {
+            "start": {
+              "line": 30,
+              "column": 16
+            },
+            "end": {
+              "line": 32,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        },
+        {
+          "name": "user-error-message",
+          "description": "User specified Custom error message\nIf userErrorMessage is defined, show appropriate user-error-message\nwhich is either an object\n   ```{\n      rangeOverflow:'Date should be prior',\n      default: 'Invalid Value in field'\n   }```\nor a string, 'Invalid value'\nSo check if specific error-coode is defined in user-error-message object\nIf not, see if 'default' error-code is defined\notherwise if user-error-message is string, show that error-message,\nif not, then resort to incoming-error-message.",
+          "sourceRange": {
+            "start": {
+              "line": 48,
+              "column": 16
+            },
+            "end": {
+              "line": 50,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "error-message",
+          "description": "Error message displayed",
+          "sourceRange": {
+            "start": {
+              "line": 53,
+              "column": 16
+            },
+            "end": {
+              "line": 56,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "hidden",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 64,
+              "column": 16
+            },
+            "end": {
+              "line": 68,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "validation-function",
+          "description": "Custom validation function",
+          "sourceRange": {
+            "start": {
+              "line": 71,
+              "column": 16
+            },
+            "end": {
+              "line": 73,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "validate-on-input",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 75,
+              "column": 16
+            },
+            "end": {
+              "line": 77,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "field-id",
+          "description": "binding to property",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 16
+            },
+            "end": {
+              "line": 80,
+              "column": 31
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "oe-field-error",
+          "description": "Fired when the field is invalid",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "oe-field-ok",
+          "description": "Fired when the field is valid",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "register-field",
+          "description": "Fired when the element is attached to DOM to register the element",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "This is the Mixin that takes care of default validation of oe-ui input components",
+      "summary": "",
+      "path": "oe-templatize-mixin.js",
+      "properties": [],
+      "methods": [
+        {
+          "name": "__customTemplatize",
+          "description": "Replaces template from dom-if,dom-repeat or dom-bind with source template.\nIf the target is not a dom-if,dom-repeat or dom-bind , creates a new templateInstance ,\nattahces a stamped node and returns the instance.\nIf the target is not provided it returns a templateInstance class",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 30,
+              "column": 8
+            },
+            "end": {
+              "line": 76,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "target",
+              "type": "HTMLTemplate",
+              "description": "HTML template element for dom-if/dom-bind/dom-repeat"
+            },
+            {
+              "name": "source",
+              "type": "HTMLTemplate",
+              "description": "HTML template element to stamp (from lightdom)"
+            },
+            {
+              "name": "options",
+              "type": "Object",
+              "description": "options to stamp (from lightdom)"
+            }
+          ],
+          "return": {
+            "type": "(TemplateInstanceClass | HTMLTemplate)",
+            "desc": "Generated class bound to the source template or stamped instance."
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 78,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "name": "TemplatizeMixin",
+      "attributes": [],
       "events": [],
       "styling": {
         "cssVariables": [],

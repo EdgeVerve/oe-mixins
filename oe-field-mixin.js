@@ -4,6 +4,10 @@
  * Bangalore, India. All Rights Reserved.
  */
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
+import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings';
+// Resolve warning about scroll performance 
+// See https://developers.google.com/web/updates/2016/06/passive-event-listeners
+setPassiveTouchGestures(true);
 
 /**
  * This is the Mixin that takes care of default validation of oe-ui input components
