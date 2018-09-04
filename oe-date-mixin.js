@@ -49,7 +49,7 @@ const DateMixin = function (BaseClass) {
          * @param {String} oldFormat 
          */
         _formattingChanged(newFormat, oldFormat) { //eslint-disable-line no-unused-vars
-            this.$.display.value = this._format(this.value);
+            this.$.display.set('value',this._format(this.value));
         }
 
         /**
@@ -239,4 +239,4 @@ const DateMixin = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(FieldMixin);
+export default dedupingMixin(DateMixin);
