@@ -49,7 +49,8 @@ const DateMixin = function (BaseClass) {
          * @param {String} oldFormat 
          */
         _formattingChanged(newFormat, oldFormat) { //eslint-disable-line no-unused-vars
-            this.$.display.set('value',this._format(this.value));
+            //Setting it to a variable so each component can bind it differently
+            this.set('_dateValue',this._format(this.value));
         }
 
         /**
@@ -186,12 +187,12 @@ const DateMixin = function (BaseClass) {
             }
 
             if ((newValue instanceof Date) && !isNaN(newValue.getTime())) {
-                this.$.display.value = this._format(newValue);
+                this._dateValue = this._format(newValue);
                 this.validate();
             }
 
             if (newValue === undefined || newValue === null) {
-                this.$.display.value = '';
+                this._dateValue = '';
                 this.validate();
             }
         }
@@ -201,7 +202,7 @@ const DateMixin = function (BaseClass) {
          * @param {Event} evt 
          */
         _displayChanged(evt) { //eslint-disable-line no-unused-vars
-            var newstr = this.$.display.value;
+            var newstr = this._dateValue;
             var newDate;
 
             newstr = newstr.trim();
@@ -213,12 +214,12 @@ const DateMixin = function (BaseClass) {
                     return;
                 }
                 this.set('value', newDate);
-                this.$.display.value = this._format(newDate);
+                this._dateValue = this._format(newDate);
             } else {
                 this.value = undefined;
-                this.$.display.value = '';
+                this._dateValue = '';
                 /*Retain the original entered text*/
-                this.$.display.value = newstr;
+                this._dateValue = newstr;
             }
             this.validate();
         }
