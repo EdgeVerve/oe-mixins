@@ -36,6 +36,9 @@ const TimeMixin = function (BaseClass) {
          * @return {String} padded number string
          */
         _pad(num, size) {
+            if(num === undefined || num === null || isNaN(num)){
+                return '';
+            }
             var s = num + '';
             while (s.length < size) {
                 s = '0' + s;
@@ -48,28 +51,29 @@ const TimeMixin = function (BaseClass) {
          * @param {Event} e change event on hour input
          */
         _onHourChange(e) {
-            var tHour = e.currentTarget.value;
+            var el = e.currentTarget.inputElement ? e.currentTarget.inputElement :  e.currentTarget;
+            var tHour = el.value;
             if (!tHour || tHour === '') {
                 this.hour = 0;
-                e.currentTarget.value = '12';
+                el.value = '12';
                 this.txtAMPM = 'AM';
             } else {
                 var newHour = parseInt(tHour);
                 if (newHour === 0 || newHour > 23) {
                     this.hour = 0;
-                    e.currentTarget.value = '12';
+                    el.value = '12';
                     this.txtAMPM = 'AM';
                 } else if (newHour > 12) {
                     this.hour = newHour;
                     this.txtAMPM = 'PM';
-                    e.currentTarget.value = this._pad(newHour - 12, 2);
+                    el.value = this._pad(newHour - 12, 2);
                 } else if (newHour === 12) {
                     this.hour = (this.txtAMPM === 'AM' ? 0 : 12);
-                    e.currentTarget.value = this._pad(newHour, 2);
+                    el.value = this._pad(newHour, 2);
                 } else {
                     this.hour = (this.txtAMPM === 'AM' ? newHour : newHour + 12);
                     //don't change AM/PM
-                    e.currentTarget.value = this._pad(newHour, 2);
+                    el.value = this._pad(newHour, 2);
                 }
             }
         }
@@ -79,18 +83,19 @@ const TimeMixin = function (BaseClass) {
          * @param {Event} e change event on minute input
          */
         _onMinuteChange(e) {
-            var tMinute = e.currentTarget.value;
+            var el = e.currentTarget.inputElement ? e.currentTarget.inputElement :  e.currentTarget;
+            var tMinute = el.value;
             if (!tMinute || tMinute === '') {
                 this.minute = 0;
-                e.currentTarget.value = '00';
+                el.value = '00';
             } else {
                 var newMinute = parseInt(tMinute);
                 if (newMinute === 0 || newMinute > 59) {
                     this.minute = 0;
-                    e.currentTarget.value = '00';
+                    el.value = '00';
                 } else {
                     this.minute = newMinute;
-                    e.currentTarget.value = this._pad(newMinute, 2);
+                    el.value = this._pad(newMinute, 2);
                 }
             }
         }
@@ -102,7 +107,7 @@ const TimeMixin = function (BaseClass) {
         _onKeyup(e) {
             if (e.keyCode === 38 || e.keyCode === 40) {
                 var currentTarget = e.currentTarget;
-                var currentValue = currentTarget.value;
+                var currentValue = currentTarget.inputElement?currentTarget.inputElement.value: currentTarget.value;
                 currentValue = currentValue ? parseInt(currentValue) : 0;
                 if (e.keyCode === 38) {
                     currentValue++;
@@ -150,7 +155,9 @@ const TimeMixin = function (BaseClass) {
          * @return {String} padded hour value string
          */
         _hoursDisplay(h) {
-            if (h === 0 || h > 23) {
+            if(isNaN(h) || h === null || h === undefined){
+                return '';
+            }else if (h === 0 || h > 23) {
                 this.txtAMPM = 'AM';
                 return '12';
             } else if (h > 12) {
@@ -170,7 +177,9 @@ const TimeMixin = function (BaseClass) {
          * @return {String} padded minute string
          */
         _minutesDisplay(m) {
-            if (m <= 0 || m > 59) {
+            if(isNaN(m) || m === null || m === undefined){
+                return '';
+            }else if (m <= 0 || m > 59) {
                 return '00';
             } else {
                 return this._pad(m, 2);

@@ -180,6 +180,12 @@ const DateMixin = function (BaseClass) {
          * @param {Date} oldValue 
          */
         _valueChanged(newValue, oldValue) { //eslint-disable-line no-unused-vars
+
+            if(typeof super._valueChanged == "function"){
+                super._valueChanged(newValue, oldValue);
+                return;
+            }
+
             if (newValue && !(newValue instanceof Date)) {
                 var v = new Date(newValue);
                 this.value = v;
@@ -202,6 +208,10 @@ const DateMixin = function (BaseClass) {
          * @param {Event} evt 
          */
         _displayChanged(evt) { //eslint-disable-line no-unused-vars
+            if(typeof super._displayChanged == "function"){
+                super._displayChanged(evt);
+                return;
+            }
             var newstr = this._dateValue;
             var newDate;
 
