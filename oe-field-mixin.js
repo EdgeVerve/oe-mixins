@@ -4,10 +4,7 @@
  * Bangalore, India. All Rights Reserved.
  */
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
-import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings';
-// Resolve warning about scroll performance 
-// See https://developers.google.com/web/updates/2016/06/passive-event-listeners
-setPassiveTouchGestures(true);
+import { OECommonMixin } from './oe-common-mixins';
 
 /**
  * This is the Mixin that takes care of default validation of oe-ui input components
@@ -169,19 +166,6 @@ const FieldMixin = function (BaseClass) {
             return true;
         }
 
-        /**
-         * Get the value from the 'obj' based on the 'path'.
-         * @param {Object} obj object to navigate
-         * @param {String} path path for navigation
-         * @return {Any} value present in the given path of the obj.
-         */
-        _deepValue(obj, path) {
-            path = path.split('.');
-            for (var i = 0, len = path.length; obj && i < len; i++) {
-                obj = obj[path[i]];
-            }
-            return obj;
-        }
 
         /**
          * Validate, overrides Paper-Input-Behavior's validate method
@@ -276,28 +260,7 @@ const FieldMixin = function (BaseClass) {
             }
             return hash;
         }
-
-        /**
-         * Polymer fire function used to dispatch custom events
-         * @param {String} type event name
-         * @param {Object} detail data to be sent in the event
-         * @param {Object} options optionals options for the event {bubbles:Boolean,cancelable:Boolean,composed:Boolean,node:HTML Element}
-         * @return {Event} Custom event created based on the parameters
-         */
-        fire(type, detail, options) {
-            options = options || {};
-            detail = (detail === null || detail === undefined) ? {} : detail;
-            let event = new Event(type, {
-                bubbles: options.bubbles === undefined ? true : options.bubbles,
-                cancelable: Boolean(options.cancelable),
-                composed: options.composed === undefined ? true : options.composed
-            });
-            event.detail = detail;
-            let node = options.node || this;
-            node.dispatchEvent(event);
-            return event;
-        }
     }
 }
 
-export default dedupingMixin(FieldMixin);
+export default dedupingMixin(OECommonMixin(FieldMixin));
