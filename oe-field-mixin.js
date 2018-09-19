@@ -4,7 +4,7 @@
  * Bangalore, India. All Rights Reserved.
  */
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
-import { OECommonMixin } from './oe-common-mixins';
+import { OECommonMixin } from './oe-common-mixin';
 
 /**
  * This is the Mixin that takes care of default validation of oe-ui input components

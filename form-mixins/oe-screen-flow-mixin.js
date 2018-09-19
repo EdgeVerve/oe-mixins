@@ -5,7 +5,7 @@
  */
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 import { OEAjaxMixin } from '../oe-ajax-mixin';
-import { OECommonMixin } from '../oe-common-mixins';
+import { OECommonMixin } from '../oe-common-mixin';
 
 var OEUtils = window.OEUtils || {};
 /**

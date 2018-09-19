@@ -7,11 +7,6 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 import { Debouncer } from '@polymer/polymer/lib/utils/debounce.js';
 import { timeOut, microTask } from '@polymer/polymer/lib/utils/async.js';
 
-import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings';
-// Resolve warning about scroll performance 
-// See https://developers.google.com/web/updates/2016/06/passive-event-listeners
-setPassiveTouchGestures(true);
-
 /**
  * This is the Mixin that contains functions commonly used among elements,
  * They contain Polymer legacy functions and oecloud specific functions
@@ -19,7 +14,7 @@ setPassiveTouchGestures(true);
  * @polymer
  * @mixinFunction
  */
-const CommonMixin = function (BaseClass) {
+const OECommonMixin = function (BaseClass) {
 
     /**
      * @polymer
@@ -113,4 +108,4 @@ const CommonMixin = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(CommonMixin);
+export default dedupingMixin(OECommonMixin);
