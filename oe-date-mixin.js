@@ -250,4 +250,4 @@ const DateMixin = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(DateMixin);
+export const OEDateMixin = dedupingMixin(DateMixin);

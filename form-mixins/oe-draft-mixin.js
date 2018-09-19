@@ -204,4 +204,4 @@ const DraftForm = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(OEModelHandlerMixin(DraftForm));
+export const OEDraftFormMixin = dedupingMixin(OEModelHandlerMixin(DraftForm));

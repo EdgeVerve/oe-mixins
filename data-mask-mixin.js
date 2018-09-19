@@ -97,4 +97,4 @@ const DataMaskMixin = function (BaseClass) {
   }
 }
 
-export default dedupingMixin(DataMaskMixin);
+export const OEDataMaskMixin = dedupingMixin(DataMaskMixin);

@@ -188,4 +188,4 @@ const TimeMixin = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(TimeMixin);
+export const OETimeMixin = dedupingMixin(TimeMixin);

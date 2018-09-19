@@ -108,4 +108,4 @@ const TabForm = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(TabForm);
+export const OETabFormMixin =  dedupingMixin(TabForm);

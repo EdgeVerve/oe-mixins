@@ -250,4 +250,4 @@ const AjaxMixin = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(OECommonMixin(AjaxMixin));
+export const OEAjaxMixin = dedupingMixin(OECommonMixin(AjaxMixin));

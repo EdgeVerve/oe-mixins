@@ -838,4 +838,4 @@ const ModelHandler = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(OECommonMixin(ModelHandler));
+export const OEModelHandler = dedupingMixin(OECommonMixin(ModelHandler));

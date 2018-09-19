@@ -98,4 +98,4 @@ const FormMessages = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(OECommonMixin(FormMessages));
+export const OEFormMessagesMixin =  dedupingMixin(OECommonMixin(FormMessages));

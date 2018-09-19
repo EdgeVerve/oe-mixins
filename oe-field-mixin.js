@@ -262,4 +262,4 @@ const FieldMixin = function(BaseClass) {
   }
 }
 
-export default dedupingMixin(OECommonMixin(FieldMixin));
+export const OEFieldMixin = dedupingMixin(OECommonMixin(FieldMixin));

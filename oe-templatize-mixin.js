@@ -78,4 +78,4 @@ const TemplatizeMixin = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(TemplatizeMixin);
+export const OETemplatizeMixin = dedupingMixin(TemplatizeMixin);

@@ -450,4 +450,4 @@ const FormValidation = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(OECommonMixin(FormValidation));
+export const OEFormValidationMixin = dedupingMixin(OECommonMixin(FormValidation));

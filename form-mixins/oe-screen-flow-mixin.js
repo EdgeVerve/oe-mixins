@@ -88,4 +88,4 @@ const ScreenFlow = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(OECommonMixin(OEAjaxMixin(ScreenFlow)));
+export const OEScreenFlowMixin = dedupingMixin(OECommonMixin(OEAjaxMixin(ScreenFlow)));

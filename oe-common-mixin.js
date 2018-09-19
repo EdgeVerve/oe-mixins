@@ -14,7 +14,7 @@ import { timeOut, microTask } from '@polymer/polymer/lib/utils/async.js';
  * @polymer
  * @mixinFunction
  */
-const OECommonMixin = function (BaseClass) {
+const CommonMixin = function (BaseClass) {
 
     /**
      * @polymer
@@ -108,4 +108,4 @@ const OECommonMixin = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(OECommonMixin);
+export const OECommonMixin = dedupingMixin(CommonMixin);

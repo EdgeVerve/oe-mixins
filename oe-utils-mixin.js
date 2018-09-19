@@ -68,4 +68,4 @@ const UtilityMixin = function (BaseClass) {
     }
 }
 
-export default dedupingMixin(UtilityMixin);
+export const OEUtilityMixin = dedupingMixin(UtilityMixin);
