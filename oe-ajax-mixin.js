@@ -4,7 +4,7 @@
  * Bangalore, India. All Rights Reserved.
  */
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
-import { OECommonMixin } from "../oe-common-mixin";
+import { OECommonMixin } from "./oe-common-mixin";
 import 'oe-ajax/oe-ajax.js';
 
 
