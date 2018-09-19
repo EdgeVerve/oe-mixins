@@ -40,7 +40,7 @@ const ModelHandler = function (BaseClass) {
      * @polymer
      * @mixinClass
      */
-    return class extends BaseClass {
+    return class extends OECommonMixin(BaseClass) {
 
         static get properties() {
             return {
@@ -838,4 +838,4 @@ const ModelHandler = function (BaseClass) {
     }
 }
 
-export const OEModelHandler = dedupingMixin(OECommonMixin(ModelHandler));
+export const OEModelHandler = dedupingMixin(ModelHandler);

@@ -20,7 +20,7 @@ const FormValidation = function (BaseClass) {
      * @polymer
      * @mixinClass
      */
-    return class extends BaseClass {
+    return class extends OECommonMixin(BaseClass) {
 
         static get properties() {
             return {
@@ -450,4 +450,4 @@ const FormValidation = function (BaseClass) {
     }
 }
 
-export const OEFormValidationMixin = dedupingMixin(OECommonMixin(FormValidation));
+export const OEFormValidationMixin = dedupingMixin(FormValidation);

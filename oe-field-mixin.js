@@ -18,7 +18,7 @@ const FieldMixin = function(BaseClass) {
    * @polymer
    * @mixinClass
    */
-  return class extends BaseClass {
+  return class extends OECommonMixin(BaseClass) {
 
     static get properties() {
       return {
@@ -262,4 +262,4 @@ const FieldMixin = function(BaseClass) {
   }
 }
 
-export const OEFieldMixin = dedupingMixin(OECommonMixin(FieldMixin));
+export const OEFieldMixin = dedupingMixin(FieldMixin);

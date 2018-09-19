@@ -36,7 +36,7 @@ const DraftForm = function (BaseClass) {
      * @polymer
      * @mixinClass
      */
-    return class extends BaseClass {
+    return class extends OEModelHandlerMixin(BaseClass) {
 
         static get properties() {
             return {
@@ -204,4 +204,4 @@ const DraftForm = function (BaseClass) {
     }
 }
 
-export const OEDraftFormMixin = dedupingMixin(OEModelHandlerMixin(DraftForm));
+export const OEDraftFormMixin = dedupingMixin(DraftForm);

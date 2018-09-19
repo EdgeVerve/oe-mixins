@@ -22,7 +22,7 @@ const AjaxMixin = function (BaseClass) {
      * @polymer
      * @mixinClass
      */
-    return class extends BaseClass {
+    return class extends OECommonMixin(BaseClass) {
 
         /**
          * Generates a oe-ajax call based on the parameter and calls the callback function with error or response.
@@ -250,4 +250,4 @@ const AjaxMixin = function (BaseClass) {
     }
 }
 
-export const OEAjaxMixin = dedupingMixin(OECommonMixin(AjaxMixin));
+export const OEAjaxMixin = dedupingMixin(AjaxMixin);

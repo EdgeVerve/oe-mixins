@@ -21,7 +21,7 @@ const FormMessages = function (BaseClass) {
      * @polymer
      * @mixinClass
      */
-    return class extends BaseClass {
+    return class extends OECommonMixin(BaseClass) {
 
         static get properties() {
             return {
@@ -98,4 +98,4 @@ const FormMessages = function (BaseClass) {
     }
 }
 
-export const OEFormMessagesMixin =  dedupingMixin(OECommonMixin(FormMessages));
+export const OEFormMessagesMixin =  dedupingMixin(FormMessages);

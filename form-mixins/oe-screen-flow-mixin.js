@@ -21,7 +21,7 @@ const ScreenFlow = function (BaseClass) {
      * @polymer
      * @mixinClass
      */
-    return class extends BaseClass {
+    return class extends OECommonMixin(OEAjaxMixin(BaseClass)) {
 
     /**
      * This method is used to execute the bussiness rule
@@ -88,4 +88,4 @@ const ScreenFlow = function (BaseClass) {
     }
 }
 
-export const OEScreenFlowMixin = dedupingMixin(OECommonMixin(OEAjaxMixin(ScreenFlow)));
+export const OEScreenFlowMixin = dedupingMixin(ScreenFlow);
