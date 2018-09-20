@@ -60,8 +60,8 @@ const FormMessages = function (BaseClass) {
             }
         }
 
-        connectedCallback() {
-            super.connectedCallback();
+        constructor() {
+            super();
             this.addEventListener('oe-formdata-inserted', this._showInsertSuccess.bind(this));
             this.addEventListener('oe-formdata-updated', this._showUpdateSuccess.bind(this));
             this.addEventListener('oe-formdata-deleted', this._showDeleteSuccess.bind(this));

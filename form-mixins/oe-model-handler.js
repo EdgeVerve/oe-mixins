@@ -820,7 +820,7 @@ const ModelHandler = function (BaseClass) {
             for (i = 0; i < workflowButtons.length; i++) {
                 var wfButton = workflowButtons[i];
                 wfButton.addEventListener('tap', function (evt) {
-                    var btn = evt.target;
+                    var btn = evt.composedPath()[0];
 
                     var processId = btn.dataset.processId;
                     var processName = btn.dataset.processName;
@@ -830,7 +830,7 @@ const ModelHandler = function (BaseClass) {
                         processData = JSON.parse(processData);
                     }
 
-                    var action = evt.target.getAttribute('oe-workflow-action'); // eslint-disable-line no-unused-vars
+                    var action = evt.composedPath()[0].getAttribute('oe-workflow-action'); // eslint-disable-line no-unused-vars
                     self._executeWorkflowAction(processId, processName, processData);
                 });
             }

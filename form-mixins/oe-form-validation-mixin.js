@@ -78,8 +78,8 @@ const FormValidation = function (BaseClass) {
         /**
          * Attaches the necessary event listeners for the form
          */
-        connectedCallback() {
-            super.connectedCallback();
+        constructor() {
+            super();
             this.addEventListener('register-field', this._onRegisterField.bind(this));
             this.addEventListener('register-validator', this._onRegisterValidator.bind(this));
             this.addEventListener('oe-field-error', this._onFieldError.bind(this));
@@ -194,7 +194,7 @@ const FormValidation = function (BaseClass) {
         _onRegisterField(event) {
             var fieldId = event.detail.fieldId;
             if (fieldId) {
-                var el = event.target;
+                var el = event.composedPath()[0];
 
                 this.fieldControls = this.fieldControls || {};
                 this.fieldControls[fieldId] = this.fieldControls[fieldId] || [];
@@ -242,7 +242,7 @@ const FormValidation = function (BaseClass) {
          * @param {Event} event 
          */
         _onRegisterValidator(event) {
-            var validator = event.target;
+            var validator = event.composedPath()[0];
 
             if (validator !== this) {
 
@@ -271,7 +271,7 @@ const FormValidation = function (BaseClass) {
          */
         _onFieldError(event) {
             //console.log(event);
-            var control = event.target;
+            var control = event.composedPath()[0];
             var error;
             // hide as well remove all error where this field is part of
             for (var i = 0; i < this.errors.length; i++) {
@@ -305,11 +305,11 @@ const FormValidation = function (BaseClass) {
          */
         _onFieldOk(event) {
 
-            //var control = event.target;
+            //var control = event.composedPath()[0];
 
             for (var i = 0; this.errors && i < this.errors.length; i++) {
                 var error = this.errors[i];
-                if (error.controls.indexOf(event.target) >= 0) {
+                if (error.controls.indexOf(event.composedPath()[0]) >= 0) {
                     for (var j = 0; j < error.controls.length; j++) {
                         var ctrl = error.controls[j];
                         ctrl.set('invalid', false);
@@ -338,7 +338,7 @@ const FormValidation = function (BaseClass) {
          * @param {Event} event 
          */
         _onValidatorError(event) {
-            var validator = event.target;
+            var validator = event.composedPath()[0];
 
             if (validator !== this) {
 
@@ -380,13 +380,13 @@ const FormValidation = function (BaseClass) {
          * @param {Event} event 
          */
         _onValidatorOk(event) {
-            var validator = event.target;
+            var validator = event.composedPath()[0];
 
             if (validator !== this) {
 
                 /*Process only if event was raised by child not by myself */
                 /*If 'this' has raised event, then do nothing. Also don't stopPropagation. Let parent handle 'this'*/
-                validator = event.target;
+                validator = event.composedPath()[0];
                 for (var i = 0; i < this.errors.length; i++) {
                     var error = this.errors[i];
                     if (error.validator === validator) {
