@@ -6,6 +6,7 @@
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 
 /**
+ * `OETimeMixin`
  * This is the Mixin that takes care of default validation of oe-ui input components
  * 
  * @polymer
@@ -31,9 +32,9 @@ const TimeMixin = function (BaseClass) {
         
         /**
          * Adds padding to given number
-         * @param {Number} num number to pad
-         * @param {Number} size expected size of padded number
-         * @return {String} padded number string
+         * @param {number} num number to pad
+         * @param {number} size expected size of padded number
+         * @return {string} padded number string
          */
         _pad(num, size) {
             if(num === undefined || num === null || isNaN(num)){
@@ -151,8 +152,8 @@ const TimeMixin = function (BaseClass) {
         /**
          * Returns hour string after converting 24hr -> 12hr conversion
          * 
-         * @param {Number} h 
-         * @return {String} padded hour value string
+         * @param {number} h 
+         * @return {string} padded hour value string
          */
         _hoursDisplay(h) {
             if(isNaN(h) || h === null || h === undefined){
@@ -173,8 +174,8 @@ const TimeMixin = function (BaseClass) {
 
         /**
          * Returns minute string padded with necessary zeroes
-         * @param {Number} m 
-         * @return {String} padded minute string
+         * @param {number} m 
+         * @return {string} padded minute string
          */
         _minutesDisplay(m) {
             if(isNaN(m) || m === null || m === undefined){
@@ -185,7 +186,7 @@ const TimeMixin = function (BaseClass) {
                 return this._pad(m, 2);
             }
         }
-    }
-}
+    };
+};
 
 export const OETimeMixin = dedupingMixin(TimeMixin);

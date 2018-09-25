@@ -6,9 +6,8 @@
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 import { OEModelHandlerMixin } from './oe-model-handler';
 
-var OEUtils = window.OEUtils || {};
 /**
- * `DraftForm` mixin is intended to perform all the drafing related to draftData 
+ * `OEDraftFormMixin` mixin is intended to perform all the drafing related to draftData 
  * Model responsibilities, like save, load and delete.
  * 
  * When 'draftId' property of the current element changes , The mixin
@@ -57,10 +56,10 @@ const DraftForm = function (BaseClass) {
                         return {
                             componentProps: [],
                             options: {}
-                        }
+                        };
                     }
                 }
-            }
+            };
         }
 
 
@@ -71,8 +70,8 @@ const DraftForm = function (BaseClass) {
 
         /**
          * When the draft Id changes loads the new data from DraftData Model
-         * @param {String} oldVal 
-         * @param {String} newVal 
+         * @param {string} oldVal 
+         * @param {string} newVal 
          */
         _draftIdChanged(oldVal, newVal) {
             if (this.draftId) {
@@ -82,7 +81,7 @@ const DraftForm = function (BaseClass) {
 
         /**
          * Fetches the data from DraftData model based on draft Id
-         * @param {String} id draft Id to fetch data
+         * @param {string} id draft Id to fetch data
          * @param {Function} next optional callback function to be called after data is loaded
          */
         loadDraft(id, next) {
@@ -95,12 +94,12 @@ const DraftForm = function (BaseClass) {
                     this.set(modelAlias, resp.modelData);
                     if (!this.isObjectEmpty(resp.componentData)) {
                         Object.keys(resp.componentData).forEach(function (key) {
-                            this.set(key, resp.componentData[key])
-                        }.bind(this))
+                            this.set(key, resp.componentData[key]);
+                        }.bind(this));
                     }
                     this.fire('oe-show-success', 'Draft loaded saved successfully.');
                     if (next && typeof next === "function") {
-                        next()
+                        next();
                     }
                 }
             }.bind(this));
@@ -114,11 +113,11 @@ const DraftForm = function (BaseClass) {
             if (this._draftConfig && this._draftConfig.componentProps && Array.isArray(this._draftConfig.componentProps)) {
                 var obj = {};
                 this._draftConfig.componentProps.forEach(function (prop) {
-                    obj[prop] = this[prop]
+                    obj[prop] = this[prop];
                 }.bind(this));
                 return obj;
             } else {
-                return {}
+                return {};
             }
         }
 
@@ -130,7 +129,7 @@ const DraftForm = function (BaseClass) {
             if (this._draftConfig && this._draftConfig.options) {
                 return this._draftConfig.options;
             } else {
-                return {}
+                return {};
             }
         }
 
@@ -150,7 +149,7 @@ const DraftForm = function (BaseClass) {
                 "modelData": instance,
                 "componentData": componentData,
                 "options": options
-            }
+            };
 
             if (this.draftInstance && !this.isObjectEmpty(this.draftInstance)) {
                 body.id = this.draftInstance.id;
@@ -165,7 +164,7 @@ const DraftForm = function (BaseClass) {
                     this.fire('oe-draft-saved');
                     this.set('draftInstance', resp);
                     if (next) {
-                        next()
+                        next();
                     }
                 }
             }.bind(this));
@@ -196,12 +195,12 @@ const DraftForm = function (BaseClass) {
         /**
          * Checks if the provided argument is empty , i.e. contains no properties.
          * @param {Object} obj Object to check
-         * @return {Boolean} flag to denote that object is empty.
+         * @return {boolean} flag to denote that object is empty.
          */
         isObjectEmpty(obj) {
             return Object.keys(obj).length === 0 && this.obj.constructor === Object;
         }
-    }
-}
+    };
+};
 
 export const OEDraftFormMixin = dedupingMixin(DraftForm);

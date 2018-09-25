@@ -7,8 +7,10 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 import { OECommonMixin } from "../oe-common-mixin";
 import 'oe-ajax/oe-ajax.js';
 
+var OEUtils = window.OEUtils || {};
+
 /**
- *`ModelHandler` mixin is intended to perform all the model handling
+ * `OEModelHandler` mixin is intended to perform all the model handling
  * responsibilities, like fetch, save, reset, refresh etc.
  * 
  * On-Attached, the behavior scans through the shadow-dom for all the elements
@@ -147,7 +149,7 @@ const ModelHandler = function (BaseClass) {
                  * @param {Object} error contains the error details.
                  */
 
-            }
+            };
         }
 
         constructor() {
@@ -164,7 +166,7 @@ const ModelHandler = function (BaseClass) {
 
         /**
          * Registers a function to be invoked along with the stage name.
-         * @param {String} when Keyword for when to execute the function like 'preInsert','postUpdate',etc.
+         * @param {string} when Keyword for when to execute the function like 'preInsert','postUpdate',etc.
          * @param {Function} fn Function to be invoked during the the execution phase speicifed in 'when'
          */
         use(when, fn) {
@@ -252,7 +254,7 @@ const ModelHandler = function (BaseClass) {
 
         /**
          * Computes the url used for fetching data.
-         * @return {String} Url used for fetching data.
+         * @return {string} Url used for fetching data.
          */
         _getURLForFetch() {
             var retUrl;
@@ -450,9 +452,9 @@ const ModelHandler = function (BaseClass) {
 
         /**
          * Returns resolved url by Regexp substituion of "version" and "id".
-         * @param {String} url URL string for the ajax operations
+         * @param {string} url URL string for the ajax operations
          * @param {Object} model data present in the form
-         * @return {String} Modified URL string
+         * @return {string} Modified URL string
          */
         _concreteUrl(url, model) {
             if (url) {
@@ -464,9 +466,9 @@ const ModelHandler = function (BaseClass) {
 
         /**
          * Get Url based on the method type and model data 
-         * @param {String} method method type 'get','post','put' and 'delete'.
+         * @param {string} method method type 'get','post','put' and 'delete'.
          * @param {Object} model data present in the form
-         * @return {String} Modified URL string
+         * @return {string} Modified URL string
          */
         getUrl(method, model) {
             switch (method) {
@@ -480,19 +482,17 @@ const ModelHandler = function (BaseClass) {
                 case 'post':
                     {
                         return this.posturl ? this._concreteUrl(this.posturl, model) : this.resturl;
-                        break;
                     }
                 case 'PUT':
                 case 'put':
                     {
                         return this.puturl ? this._concreteUrl(this.puturl, model) : this.resturl;
-                        break;
                     }
                 case 'DELETE':
                 case 'delete':
                     {
                         if (this.deleteurl) {
-                            return this._concreteUrl(this.deleteurl, model)
+                            return this._concreteUrl(this.deleteurl, model);
                         } else {
                             var returl = this.resturl + '/' + model[this.idField];
                             // If version is applicable, then do a delete on the right endpoint
@@ -501,8 +501,8 @@ const ModelHandler = function (BaseClass) {
                             }
                             return returl;
                         }
-                        break;
                     }
+                default : return null;
             }
         }
 
@@ -654,8 +654,8 @@ const ModelHandler = function (BaseClass) {
 
         /**
          * Completes workflow tasks based on the parameters
-         * @param {String} processId processId of the workflow task
-         * @param {String} processName name of the process
+         * @param {string} processId processId of the workflow task
+         * @param {string} processName name of the process
          * @param {Object} processData Data of the current process
          */
         _executeWorkflowAction(processId, processName, processData) {
@@ -835,7 +835,7 @@ const ModelHandler = function (BaseClass) {
                 });
             }
         }
-    }
-}
+    };
+};
 
 export const OEModelHandler = dedupingMixin(ModelHandler);

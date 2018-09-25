@@ -7,9 +7,9 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 import { OEAjaxMixin } from '../oe-ajax-mixin';
 import { OECommonMixin } from '../oe-common-mixin';
 
-var OEUtils = window.OEUtils || {};
+
 /**
- * `ScreenFlow` mixin is intended to help in the transition/flow from one screen to another. 
+ * `OEScreenFlowMixin` mixin is intended to help in the transition/flow from one screen to another. 
  * It supports both conditional as well as plain routing(transition/flow from one screen to another).
  *  
  * @polymer
@@ -25,7 +25,7 @@ const ScreenFlow = function (BaseClass) {
 
     /**
      * This method is used to execute the bussiness rule
-     * @param {String} ruleName Name of the rule to be executed
+     * @param {string} ruleName Name of the rule to be executed
      * @param {Object} ruleInput The payload/context with which the rule should be executed
      * @param {Function} cb callback implemented by the caller
      */
@@ -85,7 +85,7 @@ const ScreenFlow = function (BaseClass) {
         var state = this._getState(evt);
         window.oe_navigate_to(path, state);
       }
-    }
-}
+    };
+};
 
 export const OEScreenFlowMixin = dedupingMixin(ScreenFlow);

@@ -6,7 +6,8 @@
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 import { templatize } from '@polymer/polymer/lib/utils/templatize.js';
 /**
- * This is the Mixin that takes care of default validation of oe-ui input components
+ * `OETemplatizeMixin`
+ * This is the Mixin that provides a wrapper function for templatizing a Polymer component.
  * 
  * @polymer
  * @mixinFunction
@@ -18,11 +19,13 @@ const TemplatizeMixin = function (BaseClass) {
      * @mixinClass
      */
     return class extends BaseClass {
+
         /**
          * Replaces template from dom-if,dom-repeat or dom-bind with source template.
          * If the target is not a dom-if,dom-repeat or dom-bind , creates a new templateInstance ,
          * attahces a stamped node and returns the instance.
          * If the target is not provided it returns a templateInstance class
+         * @public
          * @param {HTMLTemplate} target HTML template element for dom-if/dom-bind/dom-repeat
          * @param {HTMLTemplate} source HTML template element to stamp (from lightdom)
          * @param {Object} options options to stamp (from lightdom)
@@ -33,7 +36,7 @@ const TemplatizeMixin = function (BaseClass) {
                 "DOM-REPEAT": true,
                 "DOM-IF": true,
                 "DOM-BIND": true
-            }
+            };
             options = options || {};
             this._methodHost = options.methodHost || this;
             source.__dataHost = this;
@@ -48,9 +51,9 @@ const TemplatizeMixin = function (BaseClass) {
                 notifyInstanceProp: options.notifyInstanceProp || function (inst, prop, value) {
                     this.notifyPath(prop, value);
                 }
-            }
+            };
             if (!target) {
-                return templatize(source, this, __templatizeOptions)
+                return templatize(source, this, __templatizeOptions);
             } else {
                 if (domElement[target.tagName]) {
                     /* 
@@ -75,7 +78,7 @@ const TemplatizeMixin = function (BaseClass) {
                 }
             }
         }
-    }
-}
+    };
+};
 
 export const OETemplatizeMixin = dedupingMixin(TemplatizeMixin);

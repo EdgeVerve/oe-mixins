@@ -6,9 +6,8 @@
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 
 
-var OEUtils = window.OEUtils || {};
 /**
- * `TabForm` provides prebuilt methods to navigate through tabs in a template .
+ * `OETabFormMixin` provides prebuilt methods to navigate through tabs in a template .
  * To be used along with the 'tabbed-form' or 'tabbed-draft-form' templates.
  *  
  * @polymer
@@ -28,13 +27,13 @@ const TabForm = function (BaseClass) {
                     type: Number,
                     value: 0
                 }
-            }
+            };
         }
 
         static get observers() {
             return [
                 '_computeSteps(meta.container.steps)'
-            ]
+            ];
         }
 
         connectedCallback() {
@@ -71,8 +70,8 @@ const TabForm = function (BaseClass) {
         /**
          * Computes the text to be displayed on next/save button.
          * @param {Array} steps array of steps
-         * @param {Number} curStep current step index
-         * @return {String} button text , "save" or "next".
+         * @param {number} curStep current step index
+         * @return {string} button text , "save" or "next".
          */
         _computeBtnText(steps, curStep) {
             return curStep === (steps.length - 1) ? "Save" : "Next";
@@ -81,8 +80,8 @@ const TabForm = function (BaseClass) {
         /**
          * Computes the icon to be displayed on next/save button.
          * @param {Array} steps array of steps
-         * @param {Number} curStep current step index
-         * @return {String} icon name "save" or "chevron-right"
+         * @param {number} curStep current step index
+         * @return {string} icon name "save" or "chevron-right"
          */
         _computeBtnIcon(steps, curStep) {
             return curStep === (steps.length - 1) ? "save" : "chevron-right";
@@ -91,7 +90,7 @@ const TabForm = function (BaseClass) {
         /**
          * Computes the 'stepperSteps' to be used by oe-stepper component.
          * @param {Array} steps steps from UIComponent entry
-         * @param {Boolean} isVerticalLayout flag denoting vertical layout
+         * @param {boolean} isVerticalLayout flag denoting vertical layout
          */
         _computeSteps(steps, isVerticalLayout) {
             var stepperSteps = steps.map(function (step) {
@@ -100,12 +99,12 @@ const TabForm = function (BaseClass) {
                     "isDisabled": false,
                     "hasError": false,
                     "isCompleted": false
-                }
+                };
             });
             this.set('stepperSteps', stepperSteps);
             this._gotoFirstPage();
         }
-    }
-}
+    };
+};
 
 export const OETabFormMixin =  dedupingMixin(TabForm);

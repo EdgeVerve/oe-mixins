@@ -7,7 +7,9 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 import 'oe-utils/date-utils.js';
 import 'oe-utils/oe-utils.js';
 
+var OEUtils = window.OEUtils || {};
 /**
+ * `OEDateMixin`
  * This is the Mixin that takes care of default validation of oe-ui input components
  * 
  * @polymer
@@ -45,8 +47,8 @@ const DateMixin = function (BaseClass) {
 
         /**
          * Observer on 'format' property to update the display based on the format.
-         * @param {String} newFormat 
-         * @param {String} oldFormat 
+         * @param {string} newFormat 
+         * @param {string} oldFormat 
          */
         _formattingChanged(newFormat, oldFormat) { //eslint-disable-line no-unused-vars
             //Setting it to a variable so each component can bind it differently
@@ -56,7 +58,7 @@ const DateMixin = function (BaseClass) {
         /**
          * Converts the user shortHand inputs to Date values.
          * computes values for 'today' , 3y , -7M etc.
-         * @param {String} input input shortHand string
+         * @param {string} input input shortHand string
          * @return {Date} parsed Date value
          */
         _parseShorthand(input) {
@@ -99,7 +101,7 @@ const DateMixin = function (BaseClass) {
 
         /**
          * Parses the input string into a float after validation
-         * @param {String} input 
+         * @param {string} input 
          * @return {Float|undefined} parsed float value or undefined if the input cannot be parsed. 
          */
         _parseDecimal(input) {
@@ -107,8 +109,9 @@ const DateMixin = function (BaseClass) {
                 return undefined;
             }
             var tmp = input;
-            var isInvalid = tmp.split('.').length > 2 || tmp.lastIndexOf('+') > 0 || tmp.lastIndexOf('-') > 0 || tmp.replace(
-                /[\+\-0-9\.]/g, '').length > 0;
+           
+            var isInvalid = tmp.split('.').length > 2 || tmp.lastIndexOf('+') > 0 || tmp.lastIndexOf('-') > 0 || tmp.replace(   /* eslint-disable no-useless-escape */
+                /[\+\-0-9\.]/g, '').length > 0; 
             if (isInvalid) {
                 return undefined;
             }
@@ -119,8 +122,8 @@ const DateMixin = function (BaseClass) {
          * Computes a date based on given parameters.
          * converts a date , 1 ,'year' to return a new Date which is date+1year.
          * @param {Date} mDate input Date
-         * @param {String} tuInput variation value
-         * @param {String} type variation type
+         * @param {string} tuInput variation value
+         * @param {string} type variation type
          * @return {Date} computed date
          */
         _calcDate(mDate, tuInput, type) {
@@ -164,7 +167,7 @@ const DateMixin = function (BaseClass) {
         /**
          * Formats the input Date and returns a formatted string
          * @param {Date} dateVal Date to format.
-         * @return {String} formatted date string
+         * @return {string} formatted date string
          */
         _format(dateVal) {
             var retVal = '';
@@ -247,7 +250,7 @@ const DateMixin = function (BaseClass) {
             }
         }
 
-    }
-}
+    };
+};
 
 export const OEDateMixin = dedupingMixin(DateMixin);

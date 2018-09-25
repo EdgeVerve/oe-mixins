@@ -6,6 +6,7 @@
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 
 /**
+ * `OEDataMaskMixin`
  * This is the Mixin used to mask parts of data in the display of oe-ui components
  * 
  * @polymer
@@ -68,7 +69,7 @@ const DataMaskMixin = function (BaseClass) {
      * Return a replaced masked string based on the match.
      * 
      * @param {Object} match 
-     * @return {String} replaced string with maskChar
+     * @return {string} replaced string with maskChar
      */
     _replacer(match) {
       return new Array(match.length + 1).join(this.maskChar);
@@ -77,7 +78,7 @@ const DataMaskMixin = function (BaseClass) {
     /**
      * Sets the 'display' after masking the formatted string with the 'maskChar'.
      * 
-     * @param {String} formattedDisplay formatted string to be masked
+     * @param {string} formattedDisplay formatted string to be masked
      */
     _maskDisplay(formattedDisplay) {
       var valueToShow;
@@ -94,7 +95,7 @@ const DataMaskMixin = function (BaseClass) {
       }
       this.set('display', valueToShow);
     }
-  }
-}
+  };
+};
 
 export const OEDataMaskMixin = dedupingMixin(DataMaskMixin);

@@ -7,6 +7,7 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 import { OECommonMixin } from './oe-common-mixin';
 
 /**
+ * `OEFieldMixin`
  * This is the Mixin that takes care of default validation of oe-ui input components
  * 
  * @polymer
@@ -97,14 +98,14 @@ const FieldMixin = function(BaseClass) {
          * @event register-field
          * @param {Object} detail contains the fieldId of the element
          */
-      }
+      };
     }
 
     /**
      * Sets the vality and errorMessage based on the input parameters and 
      * the `userErrorMessage`
-     * @param {Boolean} isValid boolean flag for validation
-     * @param {String} errorMessage error message from the input element
+     * @param {boolean} isValid boolean flag for validation
+     * @param {string} errorMessage error message from the input element
      * @param {Array} errorPlaceholders placeholders for errors
      */
     setValidity(isValid, errorMessage, errorPlaceholders) {
@@ -142,8 +143,8 @@ const FieldMixin = function(BaseClass) {
 
     /**
      * Sets the 'invalid' flag and 'errorMessage'
-     * @param {Boolean} isValid boolean flag for validation
-     * @param {String} errorMessage error message from the input element
+     * @param {boolean} isValid boolean flag for validation
+     * @param {string} errorMessage error message from the input element
      * @param {Array} errorPlaceholders placeholders for errors
      */
     _setValidity(isValid, errorMessage, errorPlaceholders) {
@@ -157,7 +158,7 @@ const FieldMixin = function(BaseClass) {
 
     /** 
      * Override in individual elements to return element specific validity.
-     * @returns {!Boolean} validity of specific element
+     * @return {!boolean} validity of specific element
      */
     _validate() {
       if (typeof super._validate === "function") {
@@ -169,7 +170,7 @@ const FieldMixin = function(BaseClass) {
     /**
      * Validate, overrides Paper-Input-Behavior's validate method
      * Used to set the validity based on core input element's validity 
-     * @return {Boolean} validity of core input element.
+     * @return {boolean} validity of core input element.
      */
     validate() {
       var isValid = this._validate();
@@ -247,8 +248,8 @@ const FieldMixin = function(BaseClass) {
 
     /**
      * Generates a Hash for the given string.
-     * @param {String} str String for which Hash needs to be computed
-     * @return {Number} hash number for the given string
+     * @param {string} str String for which Hash needs to be computed
+     * @return {number} hash number for the given string
      */
     hashFunc(str) {
       var hash = 5381;
@@ -259,7 +260,7 @@ const FieldMixin = function(BaseClass) {
       return hash;
     }
 
-  }
-}
+  };
+};
 
 export const OEFieldMixin = dedupingMixin(FieldMixin);

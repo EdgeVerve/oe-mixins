@@ -10,7 +10,7 @@ import 'oe-ajax/oe-ajax.js';
 
 var OEUtils = window.OEUtils || {};
 /**
- *`AjaxMixin` provides prebuilt methods to make Ajax calls with oe-ajax component
+ * `OEAjaxMixin` provides prebuilt methods to make Ajax calls with oe-ajax component
  * 
  *  
  * @polymer
@@ -26,8 +26,8 @@ const AjaxMixin = function (BaseClass) {
 
         /**
          * Generates a oe-ajax call based on the parameter and calls the callback function with error or response.
-         * @param {String} url url to make the ajax call
-         * @param {String} method method for ajax call ,'get','put','post' or 'delete'
+         * @param {string} url url to make the ajax call
+         * @param {string} method method for ajax call ,'get','put','post' or 'delete'
          * @param {Object} body Content to pass as body of the call
          * @param {Object} header Headers set on the request
          * @param {Object} params Query parameters like filter etc.
@@ -68,12 +68,12 @@ const AjaxMixin = function (BaseClass) {
                 Object.keys(header).forEach(function (k) {
                     var val = header[k];
                     if (Array.isArray(val)) {
-                        ajax.headers[k] = val[0]
+                        ajax.headers[k] = val[0];
                     } else {
-                        ajax.headers[k] = val
+                        ajax.headers[k] = val;
                     }
 
-                })
+                });
             }
 
             ajax.addEventListener('response', function (event) {
@@ -91,23 +91,22 @@ const AjaxMixin = function (BaseClass) {
 
         /**
          * Generates a Vanilla JS XHR call based on the arguments
-         * @param {String} url url to make the xhr call
-         * @param {String} method method for xhr call ,'get','put','post' or 'delete'
+         * @param {string} url url to make the xhr call
+         * @param {string} method method for xhr call ,'get','put','post' or 'delete'
          * @param {Object} body Content to pass as body of the call
          * @param {Object} header Headers set on the request
          * @param {Function} cb Function called with Error and response.
          */
         makeXhrCall(url, method, body, header, cb) {
-            var self = this;
             method = method.toLowerCase();
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
                 if (xhr.status === 200 && xhr.readyState == 4 && xhr.response.length > 0) {
-                    cb(null, xhr.response)
+                    cb(null, xhr.response);
                 }
-            }
-            xhr.onerror = function () {
-                cb(err)
+            };
+            xhr.onerror = function (err) {
+                cb(err);
             };
             if (header) {
                 Object.keys(header).forEach(function (k) {
@@ -117,11 +116,11 @@ const AjaxMixin = function (BaseClass) {
                     } else {
                         xhr.setRequestHeader(k, val);
                     }
-                })
+                });
             }
             xhr.open(method, url);
             if (method === 'get') {
-                xhr.send()
+                xhr.send();
             } else {
                 xhr.setRequestHeader("content-type", "application/json");
                 xhr.send(JSON.stringify(body));
@@ -131,7 +130,7 @@ const AjaxMixin = function (BaseClass) {
         /**
          * Resolves the error from server into error message
          * @param {Error} err Error from server call
-         * @return {String} error message
+         * @return {string} error message
          */
         resolveError(err) {
             var errObj = OEUtils.extractErrorMessage(err);
@@ -142,7 +141,7 @@ const AjaxMixin = function (BaseClass) {
         /**
          * Resolves multiple errors from server into error message
          * @param {Error} err Error from server call
-         * @return {String|Object} error message or errors array
+         * @return {string|Object} error message or errors array
          */
         resolveErrors(err) {
             function contructError(messages, codes) {
@@ -154,7 +153,7 @@ const AjaxMixin = function (BaseClass) {
                             message: d + ' ' + e,
                             code: codes[d][j],
                             field: d
-                        }
+                        };
                         messageArr.push(messageObj);
                     });
                 });
@@ -230,7 +229,7 @@ const AjaxMixin = function (BaseClass) {
             var errObj = extractErr(err);
             if (Array.isArray(errObj)) {
                 this.fire('oe-show-error', errObj.map(function (e) {
-                    return e.message || e.code
+                    return e.message || e.code;
                 }).join(' , '));
                 return errObj;
             }
@@ -240,14 +239,14 @@ const AjaxMixin = function (BaseClass) {
 
         /**
          * Computes valid path based on restApiRoot
-         * @param {String} path 
+         * @param {string} path 
          */
         _getRestApiUrl(path) {
             var restApiRoot = (window.OEUtils && window.OEUtils.restApiRoot) ? window.OEUtils.restApiRoot : '/api';
             return restApiRoot + path;
         }
 
-    }
-}
+    };
+};
 
 export const OEAjaxMixin = dedupingMixin(AjaxMixin);

@@ -8,7 +8,7 @@ import { OECommonMixin } from "../oe-common-mixin";
 import 'oe-ajax/oe-ajax.js';
 
 /**
- *`FormMessages` mixin is intended to fire predefined events on form status changes like,
+ * `OEFormMessagesMixin` mixin is intended to fire predefined events on form status changes like,
  * Data insertion/updation/deletion and data load.
  * 
  *  
@@ -57,7 +57,7 @@ const FormMessages = function (BaseClass) {
                     type: String,
                     value: 'record-loaded'
                 }
-            }
+            };
         }
 
         constructor() {
@@ -95,7 +95,7 @@ const FormMessages = function (BaseClass) {
         _showLoadSuccess() {
             this.fire('oe-show-message', this.loadSuccessMessage || 'Data loaded');
         }
-    }
-}
+    };
+};
 
 export const OEFormMessagesMixin =  dedupingMixin(FormMessages);

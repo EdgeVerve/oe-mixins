@@ -8,6 +8,7 @@ import { Debouncer } from '@polymer/polymer/lib/utils/debounce.js';
 import { timeOut, microTask } from '@polymer/polymer/lib/utils/async.js';
 
 /**
+ * `OECommonMixin`
  * This is the Mixin that contains functions commonly used among elements,
  * They contain Polymer legacy functions and oecloud specific functions
  * 
@@ -25,7 +26,7 @@ const CommonMixin = function (BaseClass) {
         /**
          * Get the value from the 'obj' based on the 'path'.
          * @param {Object} obj object to navigate
-         * @param {String} path path for navigation
+         * @param {string} path path for navigation
          * @return {Any} value present in the given path of the obj.
          */
         _deepValue(obj, path) {
@@ -87,7 +88,7 @@ const CommonMixin = function (BaseClass) {
 
         /**
          * Polymer fire function used to dispatch custom events
-         * @param {String} type event name
+         * @param {string} type event name
          * @param {Object} detail data to be sent in the event
          * @param {Object} options optionals options for the event {bubbles:Boolean,cancelable:Boolean,composed:Boolean,node:HTML Element}
          * @return {Event} Custom event created based on the parameters
@@ -105,7 +106,7 @@ const CommonMixin = function (BaseClass) {
             node.dispatchEvent(event);
             return event;
         }
-    }
-}
+    };
+};
 
 export const OECommonMixin = dedupingMixin(CommonMixin);

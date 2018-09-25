@@ -8,7 +8,7 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 
 var OEUtils = window.OEUtils || {};
 /**
- *`UtilityMixin` contains commonly used functions
+ *`OEUtilityMixin` contains commonly used functions
  * 
  *  
  * @polymer
@@ -24,7 +24,7 @@ const UtilityMixin = function (BaseClass) {
         /**
          * Checks if the list is empty list
          * @param {Array} list 
-         * @return {Boolean}
+         * @return {boolean}
          */
         _isEmpty(list) {
             return !list || list.length === 0;
@@ -33,7 +33,7 @@ const UtilityMixin = function (BaseClass) {
         /**
          * Checks if the list is not empty
          * @param {Array} list 
-         * @return {Boolean}
+         * @return {boolean}
          */
         _isNotEmpty(list) {
             return list && list.length > 0;
@@ -43,7 +43,7 @@ const UtilityMixin = function (BaseClass) {
          * Checks if the arguments are equal
          * @param {Any} lhs 
          * @param {Any} rhs 
-         * @return {Boolean}
+         * @return {boolean}
          */
         _isEqual(lhs, rhs) {
             return lhs === rhs;
@@ -51,8 +51,8 @@ const UtilityMixin = function (BaseClass) {
 
         /**
          * Provides a URL computed based on uibaseroute
-         * @param {String} url 
-         * @return {String} computed URL for ui component
+         * @param {string} url 
+         * @return {string} computed URL for ui component
          */
         uiurl(url) {
             var pre = OEUtils.uibaseroute || '';
@@ -65,7 +65,7 @@ const UtilityMixin = function (BaseClass) {
             }
             return pre + post;
         }
-    }
-}
+    };
+};
 
 export const OEUtilityMixin = dedupingMixin(UtilityMixin);

@@ -8,7 +8,7 @@ import { OECommonMixin } from "../oe-common-mixin";
 import 'oe-ajax/oe-ajax.js';
 
 /**
- *`FormValidation` mixin is used to handle validation of oe field components in the form.
+ * `OEFormValidationMixin` mixin is used to handle validation of oe field components in the form.
  * It includes single field validation and multi field validations via oe-validators
  *  
  * @polymer
@@ -68,7 +68,7 @@ const FormValidation = function (BaseClass) {
                         return [];
                     }
                 }
-            }
+            };
         }
 
         static get observers() {
@@ -208,8 +208,8 @@ const FormValidation = function (BaseClass) {
 
         /**
          * Clears the error of the components related to a fieldId
-         * @param {String} fieldId 
-         * @param {String} errType 
+         * @param {string} fieldId 
+         * @param {string} errType 
          */
         clearFieldErrors(fieldId, errType) {
             var self = this;
@@ -447,7 +447,7 @@ const FormValidation = function (BaseClass) {
             }
             this.errors = [];
         }
-    }
-}
+    };
+};
 
 export const OEFormValidationMixin = dedupingMixin(FormValidation);
