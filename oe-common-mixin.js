@@ -86,6 +86,19 @@ const CommonMixin = function (BaseClass) {
                 ~microTask.run(callback.bind(this));
         }
 
+
+        /**
+         * Cancels an async operation started with `async`.
+         *
+         * @param {number} handle Handle returned from original `async` call to
+         *   cancel.
+         * @return {void}
+         */
+
+        cancelAsync(handle) {
+            handle < 0 ? microTask.cancel(~handle) : timeOut.cancel(handle);
+        }
+
         /**
          * Polymer fire function used to dispatch custom events
          * @param {string} type event name

@@ -715,16 +715,40 @@
           }
         },
         {
+          "name": "cancelAsync",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 97,
+              "column": 8
+            },
+            "end": {
+              "line": 99,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "handle"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
           "name": "fire",
           "description": "Polymer fire function used to dispatch custom events",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 108,
               "column": 8
             },
             "end": {
-              "line": 107,
+              "line": 120,
               "column": 9
             }
           },
@@ -761,7 +785,7 @@
           "column": 0
         },
         "end": {
-          "line": 109,
+          "line": 122,
           "column": 2
         }
       },
