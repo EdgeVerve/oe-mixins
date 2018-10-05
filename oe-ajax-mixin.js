@@ -49,8 +49,6 @@ const AjaxMixin = function (BaseClass) {
             ajax.method = method.toUpperCase();
             if (ajax.method == 'GET') {
                 params = params || {};
-                params.filter = params.filter || {};
-                params.filter.scope = {};
             }
             if (params) {
                 if (params.filter) {
