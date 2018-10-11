@@ -369,7 +369,7 @@ const ModelHandler = function (BaseClass) {
          */
         doEvent(evt) {
             var btn = evt.currentTarget;
-            var eventName = btn.getAttribute('oe-action-event');
+            var eventName = btn && btn.getAttribute('oe-action-event');
             if (eventName) {
                 btn.fire(eventName, btn.dataset.eventDetails);
             } else {
@@ -579,7 +579,7 @@ const ModelHandler = function (BaseClass) {
         doDelete(evt) {
             var self = this;
             var button = evt.currentTarget;
-            var modelName = button.getAttribute('oe-action-model') || self.modelAlias;
+            var modelName = button? (button.getAttribute('oe-action-model') || self.modelAlias) : self.modelAlias;
             var model = self[modelName];
             if (model && model[self.idField]) {
                 var headers = {};
@@ -629,6 +629,9 @@ const ModelHandler = function (BaseClass) {
         doRequest(evt) {
 
             var btn = evt.currentTarget;
+            if(!btn){
+                return;
+            }
             var modelName = btn.getAttribute('oe-action-model') || this.modelAlias;
             var requestUrl = btn.getAttribute('request-url');
             var httpType = btn.getAttribute('http-type');
