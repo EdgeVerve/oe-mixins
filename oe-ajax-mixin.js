@@ -5,6 +5,7 @@
  */
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 import { OECommonMixin } from "./oe-common-mixin";
+import 'oe-utils/oe-utils.js';
 import 'oe-ajax/oe-ajax.js';
 
 
