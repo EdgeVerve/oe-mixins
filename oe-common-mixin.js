@@ -3,9 +3,9 @@
  * ©2018-2019 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
  * Bangalore, India. All Rights Reserved.
  */
-import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
-import { Debouncer } from '@polymer/polymer/lib/utils/debounce.js';
-import { timeOut, microTask } from '@polymer/polymer/lib/utils/async.js';
+import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin.js";
+import { Debouncer } from "@polymer/polymer/lib/utils/debounce.js";
+import { timeOut, microTask } from "@polymer/polymer/lib/utils/async.js";
 
 /**
  * `OECommonMixin`

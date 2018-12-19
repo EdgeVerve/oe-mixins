@@ -3,9 +3,9 @@
  * ©2018-2019 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
  * Bangalore, India. All Rights Reserved.
  */
-import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
-import { OECommonMixin } from "../oe-common-mixin";
-import 'oe-ajax/oe-ajax.js';
+import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin.js";
+import { OECommonMixin } from "../oe-common-mixin.js";
+import "oe-ajax/oe-ajax.js";
 
 var OEUtils = window.OEUtils || {};
 

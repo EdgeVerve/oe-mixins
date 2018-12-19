@@ -3,8 +3,8 @@
  * ©2018-2019 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
  * Bangalore, India. All Rights Reserved.
  */
-import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
-import { templatize } from '@polymer/polymer/lib/utils/templatize.js';
+import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin.js";
+import { templatize } from "@polymer/polymer/lib/utils/templatize.js";
 /**
  * `OETemplatizeMixin`
  * This is the Mixin that provides a wrapper function for templatizing a Polymer component.

@@ -3,8 +3,8 @@
  * ©2018-2019 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
  * Bangalore, India. All Rights Reserved.
  */
-import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
-import { OEModelHandlerMixin } from './oe-model-handler';
+import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin.js";
+import { OEModelHandlerMixin } from "./oe-model-handler.js";
 
 /**
  * `OEDraftFormMixin` mixin is intended to perform all the drafing related to draftData 
