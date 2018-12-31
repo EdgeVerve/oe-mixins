@@ -4,7 +4,7 @@
  * Bangalore, India. All Rights Reserved.
  */
 import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin.js";
-import { OEModelHandlerMixin } from "./oe-model-handler.js";
+import { OEModelHandler } from "./oe-model-handler.js";
 
 /**
  * `OEDraftFormMixin` mixin is intended to perform all the drafing related to draftData 
@@ -35,7 +35,7 @@ const DraftForm = function (BaseClass) {
      * @polymer
      * @mixinClass
      */
-    return class extends OEModelHandlerMixin(BaseClass) {
+    return class extends OEModelHandler(BaseClass) {
 
         static get properties() {
             return {
