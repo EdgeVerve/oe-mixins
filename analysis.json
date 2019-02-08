@@ -608,6 +608,304 @@
       "slots": []
     },
     {
+      "description": "`OETemplatizeMixin`\nThis is the Mixin that provides a wrapper function for templatizing a Polymer component.",
+      "summary": "",
+      "path": "oe-templatize-mixin.js",
+      "properties": [],
+      "methods": [
+        {
+          "name": "__customTemplatize",
+          "description": "Replaces template from dom-if,dom-repeat or dom-bind with source template.\nIf the target is not a dom-if,dom-repeat or dom-bind , creates a new templateInstance ,\nattahces a stamped node and returns the instance.\nIf the target is not provided it returns a templateInstance class",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 33,
+              "column": 8
+            },
+            "end": {
+              "line": 79,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "target",
+              "type": "HTMLTemplate",
+              "description": "HTML template element for dom-if/dom-bind/dom-repeat"
+            },
+            {
+              "name": "source",
+              "type": "HTMLTemplate",
+              "description": "HTML template element to stamp (from lightdom)"
+            },
+            {
+              "name": "options",
+              "type": "Object",
+              "description": "options to stamp (from lightdom)"
+            }
+          ],
+          "return": {
+            "type": "(TemplateInstanceClass | HTMLTemplate)",
+            "desc": "Generated class bound to the source template or stamped instance."
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 14,
+          "column": 0
+        },
+        "end": {
+          "line": 81,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "name": "TemplatizeMixin",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "`OETimeMixin`\nThis is the Mixin that takes care of default validation of oe-ui input components",
+      "summary": "",
+      "path": "oe-time-mixin.js",
+      "properties": [],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 23,
+              "column": 8
+            },
+            "end": {
+              "line": 29,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_pad",
+          "description": "Adds padding to given number",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 38,
+              "column": 8
+            },
+            "end": {
+              "line": 47,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "num",
+              "type": "number",
+              "description": "number to pad"
+            },
+            {
+              "name": "size",
+              "type": "number",
+              "description": "expected size of padded number"
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "padded number string"
+          }
+        },
+        {
+          "name": "_onHourChange",
+          "description": "Parses the input enetered does 24hr -> 12hr conversion",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 53,
+              "column": 8
+            },
+            "end": {
+              "line": 79,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e",
+              "type": "Event",
+              "description": "change event on hour input"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onMinuteChange",
+          "description": "Parses the input entered and pads additonal zeroes.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 85,
+              "column": 8
+            },
+            "end": {
+              "line": 101,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e",
+              "type": "Event",
+              "description": "change event on minute input"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onKeyup",
+          "description": "Handles up/down arrow keys on inputs",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 107,
+              "column": 8
+            },
+            "end": {
+              "line": 136,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e",
+              "type": "Event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_toggleAMPM",
+          "description": "Toggles AM/PM display",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 141,
+              "column": 8
+            },
+            "end": {
+              "line": 149,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_hoursDisplay",
+          "description": "Returns hour string after converting 24hr -> 12hr conversion",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 157,
+              "column": 8
+            },
+            "end": {
+              "line": 172,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h",
+              "type": "number"
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "padded hour value string"
+          }
+        },
+        {
+          "name": "_minutesDisplay",
+          "description": "Returns minute string padded with necessary zeroes",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 179,
+              "column": 8
+            },
+            "end": {
+              "line": 187,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "m",
+              "type": "number"
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "padded minute string"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 14,
+          "column": 0
+        },
+        "end": {
+          "line": 189,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "name": "TimeMixin",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
       "description": "`OECommonMixin`\nThis is the Mixin that contains functions commonly used among elements,\nThey contain Polymer legacy functions and oecloud specific functions",
       "summary": "",
       "path": "oe-common-mixin.js",
@@ -1288,304 +1586,6 @@
           "metadata": {}
         }
       ],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": []
-    },
-    {
-      "description": "`OETemplatizeMixin`\nThis is the Mixin that provides a wrapper function for templatizing a Polymer component.",
-      "summary": "",
-      "path": "oe-templatize-mixin.js",
-      "properties": [],
-      "methods": [
-        {
-          "name": "__customTemplatize",
-          "description": "Replaces template from dom-if,dom-repeat or dom-bind with source template.\nIf the target is not a dom-if,dom-repeat or dom-bind , creates a new templateInstance ,\nattahces a stamped node and returns the instance.\nIf the target is not provided it returns a templateInstance class",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 33,
-              "column": 8
-            },
-            "end": {
-              "line": 79,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "target",
-              "type": "HTMLTemplate",
-              "description": "HTML template element for dom-if/dom-bind/dom-repeat"
-            },
-            {
-              "name": "source",
-              "type": "HTMLTemplate",
-              "description": "HTML template element to stamp (from lightdom)"
-            },
-            {
-              "name": "options",
-              "type": "Object",
-              "description": "options to stamp (from lightdom)"
-            }
-          ],
-          "return": {
-            "type": "(TemplateInstanceClass | HTMLTemplate)",
-            "desc": "Generated class bound to the source template or stamped instance."
-          }
-        }
-      ],
-      "staticMethods": [],
-      "demos": [],
-      "metadata": {},
-      "sourceRange": {
-        "start": {
-          "line": 14,
-          "column": 0
-        },
-        "end": {
-          "line": 81,
-          "column": 2
-        }
-      },
-      "privacy": "public",
-      "name": "TemplatizeMixin",
-      "attributes": [],
-      "events": [],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": []
-    },
-    {
-      "description": "`OETimeMixin`\nThis is the Mixin that takes care of default validation of oe-ui input components",
-      "summary": "",
-      "path": "oe-time-mixin.js",
-      "properties": [],
-      "methods": [
-        {
-          "name": "connectedCallback",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 23,
-              "column": 8
-            },
-            "end": {
-              "line": 29,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_pad",
-          "description": "Adds padding to given number",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 38,
-              "column": 8
-            },
-            "end": {
-              "line": 47,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "num",
-              "type": "number",
-              "description": "number to pad"
-            },
-            {
-              "name": "size",
-              "type": "number",
-              "description": "expected size of padded number"
-            }
-          ],
-          "return": {
-            "type": "string",
-            "desc": "padded number string"
-          }
-        },
-        {
-          "name": "_onHourChange",
-          "description": "Parses the input enetered does 24hr -> 12hr conversion",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 53,
-              "column": 8
-            },
-            "end": {
-              "line": 79,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e",
-              "type": "Event",
-              "description": "change event on hour input"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_onMinuteChange",
-          "description": "Parses the input entered and pads additonal zeroes.",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 85,
-              "column": 8
-            },
-            "end": {
-              "line": 101,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e",
-              "type": "Event",
-              "description": "change event on minute input"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_onKeyup",
-          "description": "Handles up/down arrow keys on inputs",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 107,
-              "column": 8
-            },
-            "end": {
-              "line": 136,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e",
-              "type": "Event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_toggleAMPM",
-          "description": "Toggles AM/PM display",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 141,
-              "column": 8
-            },
-            "end": {
-              "line": 149,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_hoursDisplay",
-          "description": "Returns hour string after converting 24hr -> 12hr conversion",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 157,
-              "column": 8
-            },
-            "end": {
-              "line": 172,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "h",
-              "type": "number"
-            }
-          ],
-          "return": {
-            "type": "string",
-            "desc": "padded hour value string"
-          }
-        },
-        {
-          "name": "_minutesDisplay",
-          "description": "Returns minute string padded with necessary zeroes",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 179,
-              "column": 8
-            },
-            "end": {
-              "line": 187,
-              "column": 9
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "m",
-              "type": "number"
-            }
-          ],
-          "return": {
-            "type": "string",
-            "desc": "padded minute string"
-          }
-        }
-      ],
-      "staticMethods": [],
-      "demos": [],
-      "metadata": {},
-      "sourceRange": {
-        "start": {
-          "line": 14,
-          "column": 0
-        },
-        "end": {
-          "line": 189,
-          "column": 2
-        }
-      },
-      "privacy": "public",
-      "name": "TimeMixin",
-      "attributes": [],
-      "events": [],
       "styling": {
         "cssVariables": [],
         "selectors": []
@@ -2366,7 +2366,7 @@
               "column": 8
             },
             "end": {
-              "line": 652,
+              "line": 655,
               "column": 9
             }
           },
@@ -2387,11 +2387,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 660,
+              "line": 663,
               "column": 8
             },
             "end": {
-              "line": 693,
+              "line": 696,
               "column": 9
             }
           },
@@ -2423,11 +2423,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 698,
+              "line": 701,
               "column": 8
             },
             "end": {
-              "line": 836,
+              "line": 839,
               "column": 9
             }
           },
@@ -2447,7 +2447,7 @@
           "column": 0
         },
         "end": {
-          "line": 838,
+          "line": 841,
           "column": 2
         }
       },
@@ -3663,11 +3663,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 36,
+              "line": 37,
               "column": 8
             },
             "end": {
-              "line": 89,
+              "line": 88,
               "column": 9
             }
           },
@@ -3719,11 +3719,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 98,
               "column": 8
             },
             "end": {
-              "line": 127,
+              "line": 126,
               "column": 9
             }
           },
@@ -3765,11 +3765,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 133,
               "column": 8
             },
             "end": {
-              "line": 138,
+              "line": 137,
               "column": 9
             }
           },
@@ -3792,11 +3792,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 145,
+              "line": 144,
               "column": 8
             },
             "end": {
-              "line": 237,
+              "line": 236,
               "column": 9
             }
           },
@@ -3819,11 +3819,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 243,
+              "line": 242,
               "column": 8
             },
             "end": {
-              "line": 246,
+              "line": 245,
               "column": 9
             }
           },
@@ -3841,11 +3841,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 18,
+          "line": 19,
           "column": 0
         },
         "end": {
-          "line": 249,
+          "line": 248,
           "column": 2
         }
       },
