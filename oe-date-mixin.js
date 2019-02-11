@@ -41,8 +41,74 @@ const DateMixin = function (BaseClass) {
                     type: String,
                     value: 'DD MMM YYYY',
                     observer: '_formattingChanged'
+                },
+                /**
+                 *  List of dates that should be disabled for selection,
+                 *  Should be Date objects or date strings in 'MM-DD-YYYY' format
+                 */
+                holidays: {
+                    type: Array
+                },
+                /**
+                 * Weekly offs expressed as [0-6]
+                 *
+                 * @attribute disabledDays
+                 * @type Array
+                 * @default []
+                 */
+                disabledDays: {
+                    type: Array
+                },
+                /**
+                 * Prevent manual entry of date value
+                 */
+                disableTextInput:{
+                    type:Boolean,
+                    value:false,
+                    observer:'__disableInput'
                 }
             };
+        }
+
+        connectedCallback(){
+            super.connectedCallback();
+            this.addEventListener('iron-overlay-opened', e => this._handleOverlayOpen(e));
+            this.addEventListener('iron-overlay-closed', e => this._handleOverlayClose(e));
+        }
+
+        /**
+         * Set oe-input to readonly on disableTextInput flag
+         */
+        __disableInput() {
+            if (!this.readonly && this.disableTextInput) {
+                this.$.display.set('readonly', true);
+            }
+        }
+
+        /**
+         * When overlay is opened set the oe-input to readonly and disabled to
+         * prevent the Mobile keyboard from launching
+         */
+        _handleOverlayOpen() {
+            this.$.display.set('readonly', true);
+            this.$.display.set('disabled', true);
+        }
+
+        /**
+         * When overlay is closed reset back to original settings
+         */
+        _handleOverlayClose() {
+            this.$.display.set('readonly', this.readonly);
+            this.$.display.set('disabled', this.disabled);
+            this.__disableInput();
+        }
+
+        /**
+         * Clear the date value entered 
+         */
+        _clearDate(){
+            this.value = undefined;
+            this.display = '';
         }
 
         /**
@@ -52,7 +118,7 @@ const DateMixin = function (BaseClass) {
          */
         _formattingChanged(newFormat, oldFormat) { //eslint-disable-line no-unused-vars
             //Setting it to a variable so each component can bind it differently
-            this.set('_dateValue',this._format(this.value));
+            this.set('_dateValue', this._format(this.value));
         }
 
         /**
@@ -109,9 +175,9 @@ const DateMixin = function (BaseClass) {
                 return undefined;
             }
             var tmp = input;
-           
+
             var isInvalid = tmp.split('.').length > 2 || tmp.lastIndexOf('+') > 0 || tmp.lastIndexOf('-') > 0 || tmp.replace(   /* eslint-disable no-useless-escape */
-                /[\+\-0-9\.]/g, '').length > 0; 
+                /[\+\-0-9\.]/g, '').length > 0;
             if (isInvalid) {
                 return undefined;
             }
@@ -184,7 +250,7 @@ const DateMixin = function (BaseClass) {
          */
         _valueChanged(newValue, oldValue) { //eslint-disable-line no-unused-vars
 
-            if(typeof super._valueChanged == "function"){
+            if (typeof super._valueChanged == "function") {
                 super._valueChanged(newValue, oldValue);
                 return;
             }
@@ -211,7 +277,7 @@ const DateMixin = function (BaseClass) {
          * @param {Event} evt 
          */
         _displayChanged(evt) { //eslint-disable-line no-unused-vars
-            if(typeof super._displayChanged == "function"){
+            if (typeof super._displayChanged == "function") {
                 super._displayChanged(evt);
                 return;
             }
@@ -250,6 +316,42 @@ const DateMixin = function (BaseClass) {
             }
         }
 
+        /**
+         * Custom validation to check if entered values is not a
+         * disabled day or a holiday.
+         * @return {boolean} validity
+         */
+        _validate() {
+            if (!this.value) {
+                if (this._dateValue) {
+                    this.setValidity(false, 'dateFormat');
+                    return false;
+                }
+                return true;
+            }
+            if (this.holidays && this.holidays.length > 0) {
+                var selectedDate = this.value;
+                var inValid = this.holidays.find(function (h) {
+                    var d = h;
+                    if (typeof h !== Date) {
+                        d = new Date(h);
+                    }
+                    return (d.toDateString() === selectedDate.toDateString());
+                });
+                if (inValid) {
+                    this.setValidity(false, 'dateIsHoliday');
+                    return false;
+                }
+            }
+            if (this.disabledDays && this.disabledDays.length > 0) {
+                var selectedDay = this.value.getUTCDay();
+                if (this.disabledDays.indexOf(selectedDay) !== -1) {
+                    this.setValidity(false, 'dateIsHoliday');
+                    return false;
+                }
+            }
+            return true;
+        }
     };
 };
 
