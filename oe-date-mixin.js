@@ -90,6 +90,9 @@ const DateMixin = function (BaseClass) {
          * prevent the Mobile keyboard from launching
          */
         _handleOverlayOpen() {
+            if(this.dropdownMode){
+                return;
+            }
             this.$.display.set('readonly', true);
             this.$.display.set('disabled', true);
         }
@@ -98,6 +101,9 @@ const DateMixin = function (BaseClass) {
          * When overlay is closed reset back to original settings
          */
         _handleOverlayClose() {
+            if(this.dropdownMode){
+                return;
+            }
             this.$.display.set('readonly', this.readonly);
             this.$.display.set('disabled', this.disabled);
             this.__disableInput();
