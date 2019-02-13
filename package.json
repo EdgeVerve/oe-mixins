@@ -13,8 +13,13 @@
     "oe-utils": "git+http://10.73.97.24/polymer-3/oe-utils.git#master"
   },
   "devDependencies": {
-    "@polymer/iron-component-page": "^3.0.0-pre.21",
-    "@webcomponents/webcomponentsjs": "^2.0.0",
-    "wct-browser-legacy": "^1.0.0"
+    "@polymer/iron-component-page": "4.0.1",
+    "@webcomponents/webcomponentsjs": "2.2.7",
+    "@polymer/test-fixture": "4.0.2",
+    "axe-core": "3.1.2",
+    "chai": "4.2.0",
+    "mocha": "5.2.0",
+    "sinon": "7.2.3",
+    "wct-mocha": "1.0.0"
   }
 }
