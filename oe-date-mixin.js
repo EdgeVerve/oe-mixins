@@ -283,6 +283,8 @@ const DateMixin = function (BaseClass) {
          * @param {Event} evt 
          */
         _displayChanged(evt) { //eslint-disable-line no-unused-vars
+            evt.stopImmediatePropagation();
+            evt.stopPropagation();
             if (typeof super._displayChanged == "function") {
                 super._displayChanged(evt);
                 return;
@@ -307,19 +309,6 @@ const DateMixin = function (BaseClass) {
                 this._dateValue = newstr;
             }
             this.validate();
-        }
-
-        /**
-         * Check for min/max validity
-         * @param {Date} value 
-         */
-        _checkMinMaxValidity(value) {
-            if (this.max && value > this.max) {
-                this.setValidity(false, 'rangeOverflow');
-            }
-            if (this.min && value < this.min) {
-                this.setValidity(false, 'rangeUnderflow');
-            }
         }
 
         /**
@@ -355,6 +344,14 @@ const DateMixin = function (BaseClass) {
                     this.setValidity(false, 'dateIsHoliday');
                     return false;
                 }
+            }
+            if (this.max && this.value > this.max) {
+                this.setValidity(false, 'rangeOverflow');
+                return false;
+            }
+            if (this.min && this.value < this.min) {
+                this.setValidity(false, 'rangeUnderflow');
+                return false;
             }
             return true;
         }
