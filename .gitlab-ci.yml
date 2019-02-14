@@ -8,7 +8,7 @@ variables:
     - if exist wct.conf.json del wct.conf.json
     - copy /Y \multi-runner\builds\wct.conf.js .
     - call npm install
-    - call polymer test
+    - call polymer test --module-resolution node --skip-selenium-install
   tags:
     - WCT_RUNNER
 
@@ -18,6 +18,10 @@ install-deps:
     - set GIT_CURL_VERBOSE=1
     - set GIT_TRACE_PACKET=2
     - call npm install
+    - echo "Node Modules Installed"
+    - call npm audit --json > vulnerabilities.json | echo "Audit logged"
+    - call npm audit
+
   artifacts:
     untracked: true
     expire_in: 2h
