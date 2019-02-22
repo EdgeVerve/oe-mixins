@@ -54,11 +54,19 @@ const DateMixin = function (BaseClass) {
                  *
                  * @attribute disabledDays
                  * @type Array
-                 * @default []
                  */
                 disabledDays: {
                     type: Array
                 },
+
+                /**
+                 * Locale to be used by oe-date-picker
+                 */
+                locale: {
+                    type: String,
+                    value: navigator.language
+                },
+
                 /**
                  * Prevent manual entry of date value
                  */
