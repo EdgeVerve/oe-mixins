@@ -16,7 +16,7 @@ var OEUtils = window.OEUtils || {};
  * @mixinFunction
  */
 const DateMixin = function (BaseClass) {
-
+    let errorDate = new Date("error");
     /**
      * @polymer
      * @mixinClass
@@ -304,7 +304,7 @@ const DateMixin = function (BaseClass) {
             if (newstr !== '') {
                 newDate = this._parseShorthand(newstr);
                 if (!newDate) {
-                    this.value = undefined;
+                    this.value = errorDate;
                     this.setValidity(false, 'dateFormat');
                     return;
                 }
