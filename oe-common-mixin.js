@@ -37,6 +37,25 @@ const CommonMixin = function (BaseClass) {
             return obj;
         }
 
+        _deepSet(obj, path, value){
+          if(!obj || !path) return;
+          if(typeof path === 'string'){
+            path = path.split('.');
+          }
+          var field = path.shift();
+          if(path.length === 0){
+            obj[field]=value;
+          } else {
+            var subobj = obj[field];
+            if(typeof subobj !== 'object'){
+              subobj = {};
+              obj[field] = subobj;
+            }
+            this._deepSet(subobj, path, value);
+          }
+          return obj;
+        }
+
         /**
          * Call `debounce` to collapse multiple requests for a named task into
          * one invocation which is made after the wait time has elapsed with
