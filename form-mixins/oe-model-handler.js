@@ -80,7 +80,8 @@ const ModelHandler = function (BaseClass) {
          *  if disableAutoFetch is true, modelHandler will not fetch the model, and caller can set model itself or set model 
          */
         disableAutoFetch: {
-          type: 'boolean'
+          type: 'boolean',
+          value: false
         },
 
         deltaChanges: {
@@ -319,6 +320,8 @@ const ModelHandler = function (BaseClass) {
       if (!this.disableAutoFetch && this.resturl && this.modelId) {
         if (this.modelId !== 'new' && this.modelId !== -1) {
           this._doFetch();
+        } else {
+          this.doClear();
         }
       }
     }
