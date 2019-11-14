@@ -1,25 +1,30 @@
 {
   "name": "oe-mixins",
   "description": "oeCloud mixins for client side components",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "scripts": {
     "test": "polymer test --module-resolution node --skip-selenium-install",
     "lint": "eslint .",
     "doc": "polymer analyze *.js , form-mixins/*.js > analysis.json"
   },
   "dependencies": {
-    "@polymer/polymer": "3.1.0",
-    "oe-ajax": "2.0.0",
-    "oe-utils": "2.0.0"
+    "@polymer/polymer": "^3.1.0",
+    "oe-ajax": "^2.0.0",
+    "oe-utils": "^2.0.0"
   },
   "devDependencies": {
-    "@polymer/iron-component-page": "4.0.1",
-    "@webcomponents/webcomponentsjs": "2.2.7",
-    "@polymer/test-fixture": "4.0.2",
+    "@polymer/iron-component-page": "^4.0.1",
+    "@webcomponents/webcomponentsjs": "^2.2.7",
+    "@polymer/test-fixture": "^4.0.2",
     "axe-core": "3.1.2",
     "chai": "4.2.0",
     "mocha": "5.2.0",
     "sinon": "7.2.3",
     "wct-mocha": "1.0.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EdgeVerve/oe-mixins.git"
   }
 }
