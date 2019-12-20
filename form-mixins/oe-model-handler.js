@@ -510,8 +510,11 @@ const ModelHandler = function (BaseClass) {
         if(this.updateWithPatch){
           model = this.deltaChanges;
         }
-
-        model._newVersion = OEUtils.UUID.generate();
+        
+        //skip adding _newVersion if disableAutoVersion is true
+        if(!this.disableAutoVersion){
+          model._newVersion = OEUtils.UUID.generate();
+        }
       }
 
       var headers = {};
