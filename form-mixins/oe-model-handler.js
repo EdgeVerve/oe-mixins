@@ -40,7 +40,7 @@ var OEUtils = window.OEUtils || {};
  * @polymer
  * @mixinFunction
  */
-const ModelHandler = function (BaseClass) {
+export const OEModelHandler = dedupingMixin(function (BaseClass) {
 
   /**
    * @polymer
@@ -782,6 +782,4 @@ const ModelHandler = function (BaseClass) {
     }
 
   };
-};
-
-export const OEModelHandler = dedupingMixin(ModelHandler);
+});

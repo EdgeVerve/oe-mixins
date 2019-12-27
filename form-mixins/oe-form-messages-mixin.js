@@ -3,19 +3,23 @@
  * ©2018-2019 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
  * Bangalore, India. All Rights Reserved.
  */
-import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin.js";
-import { OECommonMixin } from "../oe-common-mixin.js";
+import {
+    dedupingMixin
+} from "@polymer/polymer/lib/utils/mixin.js";
+import {
+    OECommonMixin
+} from "../oe-common-mixin.js";
 import "oe-ajax/oe-ajax.js";
 
 /**
- * `OEFormMessagesMixin` mixin is intended to fire predefined events on form status changes like,
+ * `OEFormMessagesMixin` is intended to fire predefined events on form status changes like,
  * Data insertion/updation/deletion and data load.
  * 
  *  
  * @polymer
  * @mixinFunction
  */
-const FormMessages = function (BaseClass) {
+export const OEFormMessagesMixin = dedupingMixin(function (BaseClass) {
 
     /**
      * @polymer
@@ -96,6 +100,4 @@ const FormMessages = function (BaseClass) {
             this.fire('oe-show-message', this.loadSuccessMessage || 'Data loaded');
         }
     };
-};
-
-export const OEFormMessagesMixin =  dedupingMixin(FormMessages);
+});

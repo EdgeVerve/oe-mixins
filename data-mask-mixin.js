@@ -3,16 +3,17 @@
  * ©2018-2019 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
  * Bangalore, India. All Rights Reserved.
  */
-import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin.js";
+import {
+  dedupingMixin
+} from "@polymer/polymer/lib/utils/mixin.js";
 
 /**
- * `OEDataMaskMixin`
- * This is the Mixin used to mask parts of data in the display of oe-ui components
+ * `OEDataMaskMixin` is used to mask parts of data in the display of oe-ui components
  * 
  * @polymer
  * @mixinFunction
  */
-const DataMaskMixin = function (BaseClass) {
+export const OEDataMaskMixin = dedupingMixin(function (BaseClass) {
 
   /**
    * @polymer
@@ -96,6 +97,4 @@ const DataMaskMixin = function (BaseClass) {
       this.set('display', valueToShow);
     }
   };
-};
-
-export const OEDataMaskMixin = dedupingMixin(DataMaskMixin);
+});

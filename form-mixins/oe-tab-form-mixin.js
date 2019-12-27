@@ -13,7 +13,7 @@ import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin.js";
  * @polymer
  * @mixinFunction
  */
-const TabForm = function (BaseClass) {
+export const OETabFormMixin =  dedupingMixin(function (BaseClass) {
 
     /**
      * @polymer
@@ -105,6 +105,4 @@ const TabForm = function (BaseClass) {
             this._gotoFirstPage();
         }
     };
-};
-
-export const OETabFormMixin =  dedupingMixin(TabForm);
+});

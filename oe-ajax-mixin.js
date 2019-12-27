@@ -17,7 +17,7 @@ var OEUtils = window.OEUtils || {};
  * @polymer
  * @mixinFunction
  */
-const AjaxMixin = function (BaseClass) {
+export const OEAjaxMixin = dedupingMixin(function (BaseClass) {
 
     /**
      * @polymer
@@ -246,6 +246,4 @@ const AjaxMixin = function (BaseClass) {
         }
 
     };
-};
-
-export const OEAjaxMixin = dedupingMixin(AjaxMixin);
+});

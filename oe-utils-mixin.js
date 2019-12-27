@@ -14,7 +14,7 @@ var OEUtils = window.OEUtils || {};
  * @polymer
  * @mixinFunction
  */
-const UtilityMixin = function (BaseClass) {
+export const OEUtilityMixin = dedupingMixin(function (BaseClass) {
 
     /**
      * @polymer
@@ -66,6 +66,4 @@ const UtilityMixin = function (BaseClass) {
             return pre + post;
         }
     };
-};
-
-export const OEUtilityMixin = dedupingMixin(UtilityMixin);
+});

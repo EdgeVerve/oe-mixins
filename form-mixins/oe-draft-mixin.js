@@ -3,11 +3,15 @@
  * ©2018-2019 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
  * Bangalore, India. All Rights Reserved.
  */
-import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin.js";
-import { OEModelHandler } from "./oe-model-handler.js";
+import {
+    dedupingMixin
+} from "@polymer/polymer/lib/utils/mixin.js";
+import {
+    OEModelHandler
+} from "./oe-model-handler.js";
 
 /**
- * `OEDraftFormMixin` mixin is intended to perform all the drafing related to draftData 
+ * `OEDraftFormMixin` is intended to perform all the drafing related to draftData 
  * Model responsibilities, like save, load and delete.
  * 
  * When 'draftId' property of the current element changes , The mixin
@@ -29,7 +33,7 @@ import { OEModelHandler } from "./oe-model-handler.js";
  * @polymer
  * @mixinFunction
  */
-const DraftForm = function (BaseClass) {
+export const OEDraftFormMixin = dedupingMixin(function (BaseClass) {
 
     /**
      * @polymer
@@ -201,6 +205,4 @@ const DraftForm = function (BaseClass) {
             return Object.keys(obj).length === 0 && this.obj.constructor === Object;
         }
     };
-};
-
-export const OEDraftFormMixin = dedupingMixin(DraftForm);
+});
