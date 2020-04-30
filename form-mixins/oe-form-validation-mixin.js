@@ -3,18 +3,22 @@
  * ©2018-2019 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
  * Bangalore, India. All Rights Reserved.
  */
-import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin.js";
-import { OECommonMixin } from "../oe-common-mixin.js";
+import {
+    dedupingMixin
+} from "@polymer/polymer/lib/utils/mixin.js";
+import {
+    OECommonMixin
+} from "../oe-common-mixin.js";
 import "oe-ajax/oe-ajax.js";
 
 /**
- * `OEFormValidationMixin` mixin is used to handle validation of oe field components in the form.
+ * `OEFormValidationMixin` is used to handle validation of oe field components in the form.
  * It includes single field validation and multi field validations via oe-validators
  *  
  * @polymer
  * @mixinFunction
  */
-const FormValidation = function (BaseClass) {
+export const OEFormValidationMixin = dedupingMixin(function (BaseClass) {
 
     /**
      * @polymer
@@ -448,6 +452,4 @@ const FormValidation = function (BaseClass) {
             this.errors = [];
         }
     };
-};
-
-export const OEFormValidationMixin = dedupingMixin(FormValidation);
+});

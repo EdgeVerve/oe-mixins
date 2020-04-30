@@ -3,17 +3,20 @@
  * ©2018-2019 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
  * Bangalore, India. All Rights Reserved.
  */
-import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin.js";
-import { OECommonMixin } from "./oe-common-mixin.js";
+import {
+  dedupingMixin
+} from "@polymer/polymer/lib/utils/mixin.js";
+import {
+  OECommonMixin
+} from "./oe-common-mixin.js";
 
 /**
- * `OEFieldMixin`
- * This is the Mixin that takes care of default validation of oe-ui input components
+ * `OEFieldMixin` takes care of default validation of oe-ui input components
  * 
  * @polymer
  * @mixinFunction
  */
-const FieldMixin = function(BaseClass) {
+export const OEFieldMixin = dedupingMixin(function (BaseClass) {
 
   /**
    * @polymer
@@ -261,6 +264,4 @@ const FieldMixin = function(BaseClass) {
     }
 
   };
-};
-
-export const OEFieldMixin = dedupingMixin(FieldMixin);
+});
