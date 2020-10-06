@@ -164,7 +164,8 @@ export const OEFieldMixin = dedupingMixin(function (BaseClass) {
      * @return {!boolean} validity of specific element
      */
     _validate() {
-      if (typeof super._validate === "function") {
+      //Edge browser sets super methods as 'function' type even if they are not present.
+      if (super._validate && typeof super._validate === "function") {
         return super._validate();
       }
       return true;

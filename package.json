@@ -1,7 +1,7 @@
 {
   "name": "oe-mixins",
   "description": "oeCloud mixins for client side components",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "scripts": {
     "test": "polymer test --module-resolution node --skip-selenium-install",
     "lint": "eslint .",
